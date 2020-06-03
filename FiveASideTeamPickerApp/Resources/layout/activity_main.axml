@@ -1,4 +1,4 @@
- <?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <GridLayout
 	xmlns:android="http://schemas.android.com/apk/res/android"
 	android:id="@+id/gridLayout"
@@ -6,5 +6,19 @@
 	android:layout_height="match_parent"
 	android:background="#00ff00"
 	android:rowCount="2"
-	android:columnCount="2">
+	android:columnCount="1">
+	<Button
+		android:text="Instructions"
+		android:minWidth="25px"
+		android:minHeight="25px"
+		android:id="@+id/instructionsButton" />
+	<Button
+		android:text="Register Team"
+		android:id="@+id/registerTeamButton" />
+	<Button
+		android:text="Pick Teams"
+		android:id="@+id/pickTeamsButton" />
+	<Button
+		android:text="Admin Interface"
+		android:id="@+id/adminInterfaceButton" />
 </GridLayout>
