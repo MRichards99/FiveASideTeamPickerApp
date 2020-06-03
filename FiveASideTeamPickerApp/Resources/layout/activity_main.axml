@@ -4,21 +4,23 @@
 	android:id="@+id/gridLayout"
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
-	android:background="#00ff00"
-	android:rowCount="2"
+	android:rowCount="4"
 	android:columnCount="1">
 	<Button
 		android:text="Instructions"
-		android:minWidth="25px"
-		android:minHeight="25px"
-		android:id="@+id/instructionsButton" />
+		android:id="@+id/instructionsButton"
+		android:layout_gravity="end|start"
+		android:layout_height="wrap_content" />
 	<Button
 		android:text="Register Team"
-		android:id="@+id/registerTeamButton" />
+		android:id="@+id/registerTeamButton"
+		android:layout_gravity="end|start" />
 	<Button
 		android:text="Pick Teams"
-		android:id="@+id/pickTeamsButton" />
+		android:id="@+id/pickTeamsButton" 
+		android:layout_gravity="end|start" />
 	<Button
 		android:text="Admin Interface"
-		android:id="@+id/adminInterfaceButton" />
+		android:id="@+id/adminInterfaceButton"
+		android:layout_gravity="end|start" />
 </GridLayout>
