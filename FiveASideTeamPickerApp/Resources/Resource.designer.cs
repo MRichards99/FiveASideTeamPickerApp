@@ -3228,6 +3228,9 @@ namespace FiveASideTeamPickerApp
 			// aapt resource value: 0x7f090028
 			public const int action_settings = 2131296296;
 			
+			// aapt resource value: 0x7f09002c
+			public const int admin_interface_button_text = 2131296300;
+			
 			// aapt resource value: 0x7f090027
 			public const int app_name = 2131296295;
 			
@@ -3239,6 +3242,9 @@ namespace FiveASideTeamPickerApp
 			
 			// aapt resource value: 0x7f090020
 			public const int character_counter_pattern = 2131296288;
+			
+			// aapt resource value: 0x7f090029
+			public const int instructions_button_text = 2131296297;
 			
 			// aapt resource value: 0x7f090021
 			public const int password_toggle_content_description = 2131296289;
@@ -3254,6 +3260,12 @@ namespace FiveASideTeamPickerApp
 			
 			// aapt resource value: 0x7f090025
 			public const int path_password_strike_through = 2131296293;
+			
+			// aapt resource value: 0x7f09002b
+			public const int pick_teams_button_text = 2131296299;
+			
+			// aapt resource value: 0x7f09002a
+			public const int register_teams_button_text = 2131296298;
 			
 			// aapt resource value: 0x7f090011
 			public const int search_menu_title = 2131296273;

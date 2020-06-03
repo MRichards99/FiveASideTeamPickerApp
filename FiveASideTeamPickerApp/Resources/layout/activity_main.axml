@@ -7,20 +7,20 @@
 	android:rowCount="4"
 	android:columnCount="1">
 	<Button
-		android:text="Instructions"
+		android:text="@string/instructions_button_text"
 		android:id="@+id/instructionsButton"
 		android:layout_gravity="end|start"
 		android:layout_height="wrap_content" />
 	<Button
-		android:text="Register Team"
+		android:text="@string/register_teams_button_text"
 		android:id="@+id/registerTeamButton"
 		android:layout_gravity="end|start" />
 	<Button
-		android:text="Pick Teams"
-		android:id="@+id/pickTeamsButton" 
+		android:text="@string/pick_teams_button_text"
+		android:id="@+id/pickTeamsButton"
 		android:layout_gravity="end|start" />
 	<Button
-		android:text="Admin Interface"
+		android:text="@string/admin_interface_button_text"
 		android:id="@+id/adminInterfaceButton"
 		android:layout_gravity="end|start" />
 </GridLayout>
