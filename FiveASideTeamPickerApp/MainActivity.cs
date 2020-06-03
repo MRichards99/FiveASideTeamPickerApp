@@ -4,6 +4,7 @@ using Android.Support.V7.App;
 using Android.Runtime;
 using Android.Widget;
 using Android.Content;
+using System.IO;
 
 namespace FiveASideTeamPickerApp
 {
@@ -46,6 +47,35 @@ namespace FiveASideTeamPickerApp
             {
                 StartActivity(typeof(AdminInterfaceActivity));
             };
+
+            // Open a stream to database file in Resources/Raw to be written to app's personal folder
+            var docFolder = System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal);
+
+            // File name to use when copied
+            var dbFile = Path.Combine(docFolder, "db.sqlite");
+            // Don't repeat these steps if the database is already part of the app's data
+            if (!System.IO.File.Exists(dbFile))
+            {
+                // Get DB file from Resources and stream the data
+                var s = Resources.OpenRawResource(Resource.Raw.FantasyTeams);
+                FileStream writeStream = new FileStream(dbFile, FileMode.OpenOrCreate, FileAccess.Write);
+                StreamExistingDatabase(s, writeStream);
+            }
+        }
+
+        private void StreamExistingDatabase(Stream readStream, Stream writeStream)
+        {
+            int Length = 256;
+            byte[] buffer = new byte[Length];
+            int bytesRead = readStream.Read(buffer, 0, Length);
+            // Write data when it's been ingested
+            while (bytesRead > 0)
+            {
+                writeStream.Write(buffer, 0, bytesRead);
+                bytesRead = readStream.Read(buffer, 0, Length);
+            }
+            readStream.Close();
+            writeStream.Close();
         }
     }
 }
