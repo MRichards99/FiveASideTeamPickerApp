@@ -20,6 +20,9 @@ namespace FiveASideTeamPickerApp
             base.OnCreate(savedInstanceState);
 
             // Create your application here
+
+            // Setting view from Resources
+            SetContentView(Resource.Layout.RegisterTeam);
         }
     }
 }

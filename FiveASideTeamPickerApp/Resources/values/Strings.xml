@@ -7,4 +7,9 @@
     <string name="pick_teams_button_text">Pick Teams</string>
     <string name="admin_interface_button_text">Admin Interface</string>
 
+    <string name="manager_first_name_textview">Manager's First Name:</string>
+    <string name="manager_surname_textview">Manager's Surname:</string>
+    <string name="fantasy_team_textview">Fantasy Team Name:</string>
+    <string name="save_button_text">Save</string>
+    <string name="cancel_button_text">Cancel</string>
 </resources>
