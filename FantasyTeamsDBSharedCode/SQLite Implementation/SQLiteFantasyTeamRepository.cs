@@ -13,16 +13,19 @@ using SQLite;
 
 namespace FantasyTeamsDBSharedCode.SQLite_Implementation
 {
-    class SQLiteFantasyTeamRepository : IFantasyTeamRepository
+    public class SQLiteFantasyTeamRepository : IFantasyTeamRepository
     {
+        private SQLiteConnection dbConnection;
+
         public SQLiteFantasyTeamRepository()
         {
-            SQLiteConnection dbConnection = SQLiteConnector.Connection;
+            dbConnection = SQLiteConnector.Connection;
         }
 
         public int AddFantasyTeam(FantasyTeam team)
         {
-            throw new NotImplementedException();
+            int rowsAdded = dbConnection.Insert(team);
+            return rowsAdded;
         }
 
         public FantasyTeam GetFantasyTeamByID(int teamID)
