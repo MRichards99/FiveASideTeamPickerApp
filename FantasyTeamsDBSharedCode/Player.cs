@@ -16,6 +16,14 @@ namespace FantasyTeamsDBSharedCode
     [Table("Players")]
     public class Player
     {
+        //private int playerID;
+        private string firstName;
+        private string surname;
+        //private int premierTeamID;
+        //private int fantasyTeamID;
+        //private int positionID;
+        //private decimal price;
+
         public Player()
         {
 
@@ -25,7 +33,7 @@ namespace FantasyTeamsDBSharedCode
         public int PlayerID { get; set; }
         public string Firstname
         {
-            get { return Firstname; }
+            get { return firstName; }
             set
             {
                 if (value.Length < 1 || value.Length > 30)
@@ -39,14 +47,14 @@ namespace FantasyTeamsDBSharedCode
 
         public string Surname
         {
-            get { return Surname; }
+            get { return surname; }
             set
             {
                 if (value.Length < 1 || value.Length > 30)
                 {
                     throw new ArgumentOutOfRangeException(nameof(value), "Player's surname can't be longer than 30 characters");
                 }
-                Surname = value;
+                surname = value;
             }
         }
 

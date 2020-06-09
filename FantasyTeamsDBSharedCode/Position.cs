@@ -16,6 +16,9 @@ namespace FantasyTeamsDBSharedCode
     [Table("Positions")]
     public class Position
     {
+        //private int positionID;
+        private string positionName;
+
         public Position()
         {
 
@@ -25,7 +28,7 @@ namespace FantasyTeamsDBSharedCode
         public int PositionID { get; set; }
         public string PositionName
         {
-            get { return PositionName; }
+            get { return positionName; }
             set
             {
                 if (value.Length < 1 || value.Length > 20)
@@ -35,9 +38,10 @@ namespace FantasyTeamsDBSharedCode
                 List<string> validPositions = new List<string> { "Goalkeeper", "Defender", "Midfielder", "Forward" };
                 if (validPositions.Contains(value) != true)
                 {
-                    // Not a valid position
                     throw new ArgumentException(nameof(value), "Not a valid position");
                 }
+
+                positionName = value;
             }
         }
     }

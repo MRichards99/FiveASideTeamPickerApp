@@ -16,6 +16,9 @@ namespace FantasyTeamsDBSharedCode
     [Table("PremierTeams")]
     public class PremierTeam
     {
+        //private int premierTeamID;
+        private string premierTeamName;
+
         public PremierTeam()
         {
 
@@ -25,14 +28,14 @@ namespace FantasyTeamsDBSharedCode
         public int PremierTeamID { get; set; }
         public string PremierTeamName
         {
-            get { return PremierTeamName; }
+            get { return premierTeamName; }
             set
             {
                 if (value.Length < 1 || value.Length > 20)
                 {
                     throw new ArgumentOutOfRangeException(nameof(value), "Premier team's name can't be longer than 20 characters");
                 }
-                PremierTeamName = value;
+                premierTeamName = value;
             }
         }
     }
