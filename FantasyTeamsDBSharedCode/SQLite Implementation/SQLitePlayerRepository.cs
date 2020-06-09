@@ -19,5 +19,40 @@ namespace FantasyTeamsDBSharedCode.SQLite_Implementation
         {
             SQLiteConnection dbConnection = SQLiteConnector.Connection;
         }
+
+        public int DeletePlayer(Player player)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Player> GetAllDefenders()
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Player> GetAllGoalkeepers()
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Player> GetAllPlayersExceptGoalkeepers()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Player GetPlayerByID(int playerID)
+        {
+            throw new NotImplementedException();
+        }
+
+        public int InsertNewPlayer(Player player)
+        {
+            throw new NotImplementedException();
+        }
+
+        public int UpdatePlayer(Player player)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

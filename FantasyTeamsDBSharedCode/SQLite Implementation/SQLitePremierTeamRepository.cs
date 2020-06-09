@@ -19,5 +19,25 @@ namespace FantasyTeamsDBSharedCode.SQLite_Implementation
         {
             SQLiteConnection dbConnection = SQLiteConnector.Connection;
         }
+
+        public int AddPremierTeam(PremierTeam team)
+        {
+            throw new NotImplementedException();
+        }
+
+        public int DeleteAllPremierTeams()
+        {
+            throw new NotImplementedException();
+        }
+
+        public int DeletePremierTeam(PremierTeam team)
+        {
+            throw new NotImplementedException();
+        }
+
+        public int UpdatePremierTeam(PremierTeam team)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

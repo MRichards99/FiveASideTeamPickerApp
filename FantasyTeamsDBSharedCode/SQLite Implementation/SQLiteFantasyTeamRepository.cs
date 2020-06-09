@@ -19,5 +19,15 @@ namespace FantasyTeamsDBSharedCode.SQLite_Implementation
         {
             SQLiteConnection dbConnection = SQLiteConnector.Connection;
         }
+
+        public int AddFantasyTeam(FantasyTeam team)
+        {
+            throw new NotImplementedException();
+        }
+
+        public FantasyTeam GetFantasyTeamByID(int teamID)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

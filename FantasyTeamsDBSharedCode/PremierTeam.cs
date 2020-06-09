@@ -23,6 +23,18 @@ namespace FantasyTeamsDBSharedCode
 
         [PrimaryKey, AutoIncrement]
         public int PremierTeamID { get; set; }
-        public string PremierTeamName { get; set; }
+        public string PremierTeamName
+        {
+            get { return PremierTeamName; }
+            set
+            {
+                if (value.Length > 20)
+                {
+                    throw new ArgumentOutOfRangeException(nameof(value), "Premier team's  name can't be longer than 20 characters");
+                }
+                PremierTeamName = value;
+            }
+        }
+        }
     }
 }
