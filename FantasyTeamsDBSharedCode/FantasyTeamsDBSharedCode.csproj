@@ -45,6 +45,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DatabaseLayer.cs" />
     <Compile Include="FantasyTeam.cs" />
     <Compile Include="IFantasyTeamRepository.cs" />
     <Compile Include="IPlayerRepository.cs" />
@@ -55,6 +56,10 @@
     <Compile Include="PremierTeam.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SQLite Implementation\SQLiteFantasyTeamRepository.cs" />
+    <Compile Include="SQLite Implementation\SQLitePlayerRepository.cs" />
+    <Compile Include="SQLite Implementation\SQLitePositionRepository.cs" />
+    <Compile Include="SQLite Implementation\SQLitePremierTeamRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />

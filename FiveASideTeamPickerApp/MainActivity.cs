@@ -52,7 +52,7 @@ namespace FiveASideTeamPickerApp
             var docFolder = System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal);
 
             // File name to use when copied
-            var dbFile = Path.Combine(docFolder, "db.sqlite");
+            var dbFile = Path.Combine(docFolder, "FiveASide.sqlite");
             // Don't repeat these steps if the database is already part of the app's data
             if (!System.IO.File.Exists(dbFile))
             {

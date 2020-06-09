@@ -14,5 +14,14 @@ namespace FantasyTeamsDBSharedCode
 {
     interface IPlayerRepository
     {
+        Player GetPlayerByID(int playerID);
+        List<Player> GetAllPlayersExceptGoalkeepers();
+        List<Player> GetAllGoalkeepers();
+        List<Player> GetAllDefenders();
+        
+
+        int InsertNewPlayer(Player player);
+        int UpdatePlayer(Player player);
+        int DeletePlayer(Player player);
     }
 }

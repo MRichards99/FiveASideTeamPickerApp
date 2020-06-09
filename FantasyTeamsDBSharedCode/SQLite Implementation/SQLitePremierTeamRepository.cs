@@ -11,18 +11,13 @@ using Android.Views;
 using Android.Widget;
 using SQLite;
 
-namespace FantasyTeamsDBSharedCode
+namespace FantasyTeamsDBSharedCode.SQLite_Implementation
 {
-    [Table("Positions")]
-    public class Position
+    class SQLitePremierTeamRepository : IPremierTeamRepository
     {
-        public Position()
+        public SQLitePremierTeamRepository()
         {
-
+            SQLiteConnection dbConnection = SQLiteConnector.Connection;
         }
-
-        [PrimaryKey, AutoIncrement]
-        public int PositionID { get; set; }
-        public string PositionName { get; set; }
     }
 }

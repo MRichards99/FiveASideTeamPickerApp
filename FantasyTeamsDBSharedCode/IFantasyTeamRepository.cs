@@ -14,5 +14,8 @@ namespace FantasyTeamsDBSharedCode
 {
     interface IFantasyTeamRepository
     {
+        FantasyTeam GetFantasyTeamByID(int teamID);
+
+        int AddFantasyTeam(FantasyTeam team);
     }
 }

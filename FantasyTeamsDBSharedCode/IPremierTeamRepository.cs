@@ -14,5 +14,9 @@ namespace FantasyTeamsDBSharedCode
 {
     interface IPremierTeamRepository
     {
+        int DeleteAllPremierTeams();
+        int DeletePremierTeam(PremierTeam team);
+        int AddPremierTeam(PremierTeam team);
+        int UpdatePremierTeam(PremierTeam team);
     }
 }
