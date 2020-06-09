@@ -28,13 +28,12 @@ namespace FantasyTeamsDBSharedCode
             get { return PremierTeamName; }
             set
             {
-                if (value.Length > 20)
+                if (value.Length < 1 || value.Length > 20)
                 {
-                    throw new ArgumentOutOfRangeException(nameof(value), "Premier team's  name can't be longer than 20 characters");
+                    throw new ArgumentOutOfRangeException(nameof(value), "Premier team's name can't be longer than 20 characters");
                 }
                 PremierTeamName = value;
             }
-        }
         }
     }
 }

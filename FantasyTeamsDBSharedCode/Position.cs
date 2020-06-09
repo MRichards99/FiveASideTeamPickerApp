@@ -28,7 +28,7 @@ namespace FantasyTeamsDBSharedCode
             get { return PositionName; }
             set
             {
-                if (value.Length > 20)
+                if (value.Length < 1 || value.Length > 20)
                 {
                     throw new ArgumentOutOfRangeException(nameof(value), "Position cannot be more than 20 characters");
                 }

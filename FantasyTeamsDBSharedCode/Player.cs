@@ -28,7 +28,7 @@ namespace FantasyTeamsDBSharedCode
             get { return Firstname; }
             set
             {
-                if (value.Length > 30)
+                if (value.Length < 1 || value.Length > 30)
                 {
                     throw new ArgumentOutOfRangeException(nameof(value), "Player's first name can't be longer than 30 characters");
                 }
@@ -42,7 +42,7 @@ namespace FantasyTeamsDBSharedCode
             get { return Surname; }
             set
             {
-                if (value.Length > 30)
+                if (value.Length < 1 || value.Length > 30)
                 {
                     throw new ArgumentOutOfRangeException(nameof(value), "Player's surname can't be longer than 30 characters");
                 }
