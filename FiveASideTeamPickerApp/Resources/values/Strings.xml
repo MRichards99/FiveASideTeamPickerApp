@@ -1,12 +1,15 @@
 <resources>
+    <!--Misc. Values-->
     <string name="app_name">FiveASideTeamPickerApp</string>
     <string name="action_settings">Settings</string>
 
+    <!--Main Menu-->
     <string name="instructions_button_text">Instructions</string>
     <string name="register_teams_button_text">Register Teams</string>
     <string name="pick_teams_button_text">Pick Teams</string>
     <string name="admin_interface_button_text">Admin Interface</string>
 
+    <!--Register Team Menu-->
     <string name="manager_first_name_textview">Manager's First Name:</string>
     <string name="manager_surname_textview">Manager's Surname:</string>
     <string name="fantasy_team_textview">Fantasy Team Name:</string>
