@@ -15,9 +15,11 @@ namespace FantasyTeamsDBSharedCode.SQLite_Implementation
 {
     class SQLitePremierTeamRepository : IPremierTeamRepository
     {
+        private SQLiteConnection dbConnection;
+
         public SQLitePremierTeamRepository()
         {
-            SQLiteConnection dbConnection = SQLiteConnector.Connection;
+            dbConnection = SQLiteConnector.Connection;
         }
 
         public int AddPremierTeam(PremierTeam team)

@@ -15,9 +15,11 @@ namespace FantasyTeamsDBSharedCode.SQLite_Implementation
 {
     class SQLitePositionRepository : IPositionRepository
     {
+        private SQLiteConnection dbConnection;
+
         public SQLitePositionRepository()
         {
-            SQLiteConnection dbConnection = SQLiteConnector.Connection;
+            dbConnection = SQLiteConnector.Connection;
         }
 
         public Position GetPlayerPosition(Player player)

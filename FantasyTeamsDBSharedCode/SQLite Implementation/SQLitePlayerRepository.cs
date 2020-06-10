@@ -15,14 +15,16 @@ namespace FantasyTeamsDBSharedCode.SQLite_Implementation
 {
     class SQLitePlayerRepository : IPlayerRepository
     {
+        private SQLiteConnection dbConnection;
+
         public SQLitePlayerRepository()
         {
-            SQLiteConnection dbConnection = SQLiteConnector.Connection;
+            dbConnection = SQLiteConnector.Connection;
         }
 
         public int DeletePlayer(Player player)
         {
-            throw new NotImplementedException();
+            return dbConnection.Delete(player);
         }
 
         public List<Player> GetAllDefenders()
@@ -37,22 +39,24 @@ namespace FantasyTeamsDBSharedCode.SQLite_Implementation
 
         public List<Player> GetAllPlayersExceptGoalkeepers()
         {
-            throw new NotImplementedException();
+            Position position = dbConnection.Table<Position>().SingleOrDefault(p => p.PositionName == "Goalkeeper");
+            return dbConnection.Table<Player>().Where(p => p.PositionID != position.PositionID).ToList<Player>();
         }
 
         public Player GetPlayerByID(int playerID)
         {
-            throw new NotImplementedException();
+            Player player = dbConnection.Table<Player>().SingleOrDefault(c => c.PlayerID == playerID);
+            return player;
         }
 
         public int InsertNewPlayer(Player player)
         {
-            throw new NotImplementedException();
+            return dbConnection.Insert(player);
         }
 
         public int UpdatePlayer(Player player)
         {
-            throw new NotImplementedException();
+            return dbConnection.Update(player);
         }
     }
 }
