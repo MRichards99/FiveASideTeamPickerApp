@@ -40,7 +40,7 @@ namespace FantasyTeamsDBSharedCode
                 {
                     throw new ArgumentOutOfRangeException(nameof(value), "Player's first name can't be longer than 30 characters");
                 }
-                Firstname = value;
+                firstName = value;
             }
         }
 

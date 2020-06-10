@@ -22,13 +22,13 @@ namespace FantasyTeamsDBSharedCode
             FantasyTeamName = teamName;
             ManagerFirstname = firstname;
             ManagerSurname = surname;
-            FantasyTeamID = 1;
         }
 
         // TODO - Once I've got fantasy teams working in the DB, test if I can remove the setter on the ID
         [PrimaryKey, AutoIncrement]
         public int FantasyTeamID { get; set; }
 
+        [Unique]
         public string FantasyTeamName {
             get { return fantasyTeamName; }
             set
