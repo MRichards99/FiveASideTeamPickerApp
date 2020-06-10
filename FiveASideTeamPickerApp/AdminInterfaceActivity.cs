@@ -28,6 +28,7 @@ namespace FiveASideTeamPickerApp
             Button adminPremierTeamButton = FindViewById<Button>(Resource.Id.adminPremierTeamButton);
 
 
+
         }
     }
 }

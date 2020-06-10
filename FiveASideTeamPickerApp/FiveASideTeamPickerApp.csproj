@@ -57,6 +57,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AdminInterfaceActivity.cs" />
+    <Compile Include="DeleteFantasyTeamActivity.cs" />
     <Compile Include="InstructionsActivity.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="PickTeamsActivity.cs" />
@@ -112,6 +113,11 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\AdminInterface.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\DeleteFantasyTeam.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>

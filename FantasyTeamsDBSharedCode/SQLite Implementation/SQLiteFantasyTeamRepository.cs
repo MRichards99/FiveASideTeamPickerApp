@@ -32,5 +32,15 @@ namespace FantasyTeamsDBSharedCode.SQLite_Implementation
         {
             throw new NotImplementedException();
         }
+
+        public int GetNumberOfFantasyTeams()
+        {
+            throw new NotImplementedException();
+        }
+
+        public int RemoveFantasyTeam(FantasyTeam team)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

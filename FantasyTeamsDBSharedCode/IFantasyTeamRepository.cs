@@ -17,5 +17,8 @@ namespace FantasyTeamsDBSharedCode
         FantasyTeam GetFantasyTeamByID(int teamID);
 
         int AddFantasyTeam(FantasyTeam team);
+        // TODO - Would this is better to remove via ID?
+        int RemoveFantasyTeam(FantasyTeam team);
+        int GetNumberOfFantasyTeams();
     }
 }

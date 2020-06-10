@@ -5,6 +5,7 @@ using Android.Runtime;
 using Android.Widget;
 using Android.Content;
 using System.IO;
+using FantasyTeamsDBSharedCode.SQLite_Implementation;
 
 namespace FiveASideTeamPickerApp
 {
@@ -32,8 +33,18 @@ namespace FiveASideTeamPickerApp
             // Open page to register a team when relevant button clicked
             registerTeamButton.Click += (sender, args) =>
             {
-                // Open register teams page
-                StartActivity(typeof(RegisterTeamActivity));
+                // Open register teams page provided there aren't already 2 teams registered
+                SQLiteFantasyTeamRepository fantasyTeamRepository = new SQLiteFantasyTeamRepository();
+                int numberOfFantasyTeams = fantasyTeamRepository.GetNumberOfFantasyTeams();
+                if (numberOfFantasyTeams < 2)
+                {
+                    StartActivity(typeof(RegisterTeamActivity));
+                }
+                else
+                {
+                    // User can delete 1 or more teams if two already exist
+                    StartActivity(typeof(DeleteFantasyTeamActivity));
+                }
             };
 
             // Open page to select players for teams when relevant button clicked
