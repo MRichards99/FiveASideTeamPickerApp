@@ -19,7 +19,15 @@ namespace FiveASideTeamPickerApp
         {
             base.OnCreate(savedInstanceState);
 
-            // Create your application here
+            // Setting view from Resources
+            SetContentView(Resource.Layout.AdminInterface);
+
+            // Get UI resources on this view
+            Button resetButton = FindViewById<Button>(Resource.Id.appResetButton);
+            Button adminPlayerButton = FindViewById<Button>(Resource.Id.adminPlayerButton);
+            Button adminPremierTeamButton = FindViewById<Button>(Resource.Id.adminPremierTeamButton);
+
+
         }
     }
 }

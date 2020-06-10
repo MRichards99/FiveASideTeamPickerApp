@@ -15,4 +15,9 @@
     <string name="fantasy_team_textview">Fantasy Team Name:</string>
     <string name="save_button_text">Save</string>
     <string name="cancel_button_text">Cancel</string>
+  
+    <!--Admin Interface-->
+    <string name="app_reset_button_text">App Reset</string>
+    <string name="admin_players_button_text">Add, Edit or Remove Players</string>
+    <string name="admin_premier_teams_button_text">Add, Edit or Remove Premier Teams</string>
 </resources>
