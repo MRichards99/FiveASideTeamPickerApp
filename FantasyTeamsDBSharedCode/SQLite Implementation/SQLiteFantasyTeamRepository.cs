@@ -28,6 +28,11 @@ namespace FantasyTeamsDBSharedCode.SQLite_Implementation
             return rowsAdded;
         }
 
+        public List<FantasyTeam> GetAllFantasyTeams()
+        {
+            return dbConnection.Table<FantasyTeam>().ToList<FantasyTeam>();
+        }
+
         public FantasyTeam GetFantasyTeamByID(int teamID)
         {
             throw new NotImplementedException();
@@ -40,7 +45,7 @@ namespace FantasyTeamsDBSharedCode.SQLite_Implementation
 
         public int RemoveFantasyTeam(FantasyTeam team)
         {
-            throw new NotImplementedException();
+            return dbConnection.Delete(team);
         }
     }
 }

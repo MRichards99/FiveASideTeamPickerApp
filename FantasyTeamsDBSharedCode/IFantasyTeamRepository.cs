@@ -20,5 +20,6 @@ namespace FantasyTeamsDBSharedCode
         // TODO - Would this is better to remove via ID?
         int RemoveFantasyTeam(FantasyTeam team);
         int GetNumberOfFantasyTeams();
+        List<FantasyTeam> GetAllFantasyTeams();
     }
 }
