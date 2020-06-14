@@ -64,6 +64,7 @@ namespace FiveASideTeamPickerApp
             // TODO - Implement making all players selectable again
 
             // Alert user that app reset has taken place
+            // TODO - Transfer message into strings.xml
             Toast.MakeText(this, "All fantasy teams have been removed and all players are now selectable", ToastLength.Short).Show();
         }
     }

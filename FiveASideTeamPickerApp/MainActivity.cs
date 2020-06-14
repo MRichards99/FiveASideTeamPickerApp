@@ -12,6 +12,13 @@ namespace FiveASideTeamPickerApp
     [Activity(Label = "@string/app_name", Theme = "@style/AppTheme", MainLauncher = true)]
     public class MainActivity : AppCompatActivity
     {
+        SQLiteFantasyTeamRepository fantasyTeamRepository;
+
+        public MainActivity()
+        {
+            SQLiteFantasyTeamRepository fantasyTeamRepository = new SQLiteFantasyTeamRepository();
+        }
+
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -34,7 +41,6 @@ namespace FiveASideTeamPickerApp
             registerTeamButton.Click += (sender, args) =>
             {
                 // Open register teams page provided there aren't already 2 teams registered
-                SQLiteFantasyTeamRepository fantasyTeamRepository = new SQLiteFantasyTeamRepository();
                 int numberOfFantasyTeams = fantasyTeamRepository.GetNumberOfFantasyTeams();
                 if (numberOfFantasyTeams < 2)
                 {
@@ -50,7 +56,17 @@ namespace FiveASideTeamPickerApp
             // Open page to select players for teams when relevant button clicked
             pickTeamsButton.Click += (sender, args) =>
             {
-                StartActivity(typeof(PickTeamsActivity));
+                int numberOfFantasyTeams = fantasyTeamRepository.GetNumberOfFantasyTeams();
+                if (numberOfFantasyTeams != 2)
+                {
+                    // TODO - Transfer message into strings.xml
+                    Toast.MakeText(this, $"Please ensure you have 2 teams registered before picking teams. There are currently {numberOfFantasyTeams} team(s) registered", ToastLength.Short).Show();
+                }
+                else
+                {
+                    StartActivity(typeof(PickTeamsActivity));
+                }
+                
             };
 
             // Open admin interface when relevant button clicked

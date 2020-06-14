@@ -16,6 +16,9 @@
     <string name="save_button_text">Save</string>
     <string name="cancel_button_text">Cancel</string>
   
+    <!--Delete Fantasy Team Menu-->
+    <string name="delete_fantasy_team_prompt_textview">Since two fantasy teams already exist, please select one to be removed</string>
+  
     <!--Admin Interface-->
     <string name="app_reset_button_text">App Reset</string>
     <string name="admin_players_button_text">Add, Edit or Remove Players</string>
