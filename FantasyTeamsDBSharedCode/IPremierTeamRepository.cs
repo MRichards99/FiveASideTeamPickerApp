@@ -18,5 +18,7 @@ namespace FantasyTeamsDBSharedCode
         int DeletePremierTeam(PremierTeam team);
         int AddPremierTeam(PremierTeam team);
         int UpdatePremierTeam(PremierTeam team);
+
+        string GetPremierTeamNameFromID(int premierTeamID);
     }
 }

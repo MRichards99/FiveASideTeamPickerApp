@@ -16,7 +16,7 @@ namespace FiveASideTeamPickerApp
 
         public MainActivity()
         {
-            SQLiteFantasyTeamRepository fantasyTeamRepository = new SQLiteFantasyTeamRepository();
+            fantasyTeamRepository = new SQLiteFantasyTeamRepository();
         }
 
         protected override void OnCreate(Bundle savedInstanceState)
@@ -66,7 +66,6 @@ namespace FiveASideTeamPickerApp
                 {
                     StartActivity(typeof(PickTeamsActivity));
                 }
-                
             };
 
             // Open admin interface when relevant button clicked

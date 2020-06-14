@@ -13,7 +13,7 @@ using SQLite;
 
 namespace FantasyTeamsDBSharedCode.SQLite_Implementation
 {
-    class SQLitePositionRepository : IPositionRepository
+    public class SQLitePositionRepository : IPositionRepository
     {
         private SQLiteConnection dbConnection;
 
@@ -25,6 +25,12 @@ namespace FantasyTeamsDBSharedCode.SQLite_Implementation
         public Position GetPlayerPosition(Player player)
         {
             throw new NotImplementedException();
+        }
+
+        public string GetPositionNameByID(int positionID)
+        {
+            Position positionFromDB = dbConnection.Table<Position>().SingleOrDefault(c => c.PositionID == positionID);
+            return positionFromDB.PositionName;
         }
     }
 }

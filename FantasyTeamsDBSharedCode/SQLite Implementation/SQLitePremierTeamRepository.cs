@@ -13,7 +13,7 @@ using SQLite;
 
 namespace FantasyTeamsDBSharedCode.SQLite_Implementation
 {
-    class SQLitePremierTeamRepository : IPremierTeamRepository
+    public class SQLitePremierTeamRepository : IPremierTeamRepository
     {
         private SQLiteConnection dbConnection;
 
@@ -35,6 +35,13 @@ namespace FantasyTeamsDBSharedCode.SQLite_Implementation
         public int DeletePremierTeam(PremierTeam team)
         {
             throw new NotImplementedException();
+        }
+
+        public string GetPremierTeamNameFromID(int premierTeamID)
+        {
+            // TODO - Refactor so premier team is grabbed from GetPremierTeam()
+            PremierTeam premierTeamFromDB = dbConnection.Table<PremierTeam>().SingleOrDefault(c => c.PremierTeamID == premierTeamID);
+            return premierTeamFromDB.PremierTeamName;
         }
 
         public int UpdatePremierTeam(PremierTeam team)

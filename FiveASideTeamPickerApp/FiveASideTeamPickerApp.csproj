@@ -56,11 +56,14 @@
     <Reference Include="Mono.Android" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdminChangePlayerDetailsActivity.cs" />
     <Compile Include="AdminInterfaceActivity.cs" />
+    <Compile Include="AdminPlayersActivity.cs" />
     <Compile Include="DeleteFantasyTeamActivity.cs" />
     <Compile Include="InstructionsActivity.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="PickTeamsActivity.cs" />
+    <Compile Include="PlayerAdapter.cs" />
     <Compile Include="RegisterTeamActivity.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -98,6 +101,9 @@
     <AndroidResource Include="Resources\mipmap-xxxhdpi\ic_launcher_round.png" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json">
+      <Version>12.0.3</Version>
+    </PackageReference>
     <PackageReference Include="Xamarin.Android.Support.Design" Version="27.0.2.1" />
   </ItemGroup>
   <ItemGroup>
@@ -118,6 +124,16 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\DeleteFantasyTeam.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\AdminPlayersLayout.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\AdminChangePlayerDetailsLayout.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>

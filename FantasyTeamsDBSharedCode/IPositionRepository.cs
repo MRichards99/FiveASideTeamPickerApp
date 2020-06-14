@@ -15,5 +15,6 @@ namespace FantasyTeamsDBSharedCode
     interface IPositionRepository
     {
         Position GetPlayerPosition(Player player);
+        string GetPositionNameByID(int positionID);
     }
 }

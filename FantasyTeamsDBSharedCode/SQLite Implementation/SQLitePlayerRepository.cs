@@ -13,7 +13,7 @@ using SQLite;
 
 namespace FantasyTeamsDBSharedCode.SQLite_Implementation
 {
-    class SQLitePlayerRepository : IPlayerRepository
+    public class SQLitePlayerRepository : IPlayerRepository
     {
         private SQLiteConnection dbConnection;
 
@@ -35,6 +35,11 @@ namespace FantasyTeamsDBSharedCode.SQLite_Implementation
         public List<Player> GetAllGoalkeepers()
         {
             throw new NotImplementedException();
+        }
+
+        public List<Player> GetAllPlayers()
+        {
+            return dbConnection.Table<Player>().ToList<Player>();
         }
 
         public List<Player> GetAllPlayersExceptGoalkeepers()

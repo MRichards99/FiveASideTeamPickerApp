@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+	<TextView
+		android:text="@string/player_details_first_name_textview"
+		android:textAppearance="?android:attr/textAppearanceMedium"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:minWidth="25px"
+		android:minHeight="25px"
+		android:id="@+id/playerDetailsFirstNameTextView" />
+	<EditText
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:id="@+id/playerDetailsFirstNameEditText" />
+	<TextView
+		android:text="@string/player_details_surname_textview"
+		android:textAppearance="?android:attr/textAppearanceMedium"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:id="@+id/playerDetailsSurnameTextView" />
+	<EditText
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:id="@+id/playerDetailsSurnameEditText" />
+	<TextView
+		android:text="@string/player_details_position_textview"
+		android:textAppearance="?android:attr/textAppearanceMedium"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:id="@+id/playerDetailsPositionTextView" />
+	<EditText
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:id="@+id/playerDetailsPositionEditText" />
+	<TextView
+		android:text="@string/player_details_price_textview"
+		android:textAppearance="?android:attr/textAppearanceMedium"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:id="@+id/playerDetailsPriceTextView" />
+	<EditText
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:id="@+id/playerDetailsPriceEditText" />
+	<Button
+		android:text="@string/save_button_text"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:id="@+id/playerDetailsSaveButton" />
+	<Button
+		android:text="@string/cancel_button_text"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:id="@+id/playerDetailsCancelButton" />
+
+</LinearLayout>

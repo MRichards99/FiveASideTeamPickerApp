@@ -40,7 +40,7 @@ namespace FantasyTeamsDBSharedCode.SQLite_Implementation
 
         public int GetNumberOfFantasyTeams()
         {
-            throw new NotImplementedException();
+            return dbConnection.Table<FantasyTeam>().Count();
         }
 
         public int RemoveFantasyTeam(FantasyTeam team)

@@ -36,10 +36,15 @@ namespace FantasyTeamsDBSharedCode
             get { return firstName; }
             set
             {
-                if (value.Length < 1 || value.Length > 30)
+                // TODO - Reimplement error handling on this setter
+                
+                /*
+                 // No minimum length as existing records contain blank first names
+                if (value.Length > 30)
                 {
                     throw new ArgumentOutOfRangeException(nameof(value), "Player's first name can't be longer than 30 characters");
                 }
+                */
                 firstName = value;
             }
         }
@@ -62,6 +67,6 @@ namespace FantasyTeamsDBSharedCode
         public int FantasyTeamID { get; set; }
         public int PositionID { get; set; }
 
-        public decimal Price { get; set; }
+        public double Price { get; set; }
     }
 }

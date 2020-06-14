@@ -35,8 +35,8 @@ namespace FiveASideTeamPickerApp
             EditText managerFirstNameEditText = FindViewById<EditText>(Resource.Id.managerFirstNameEditText);
             EditText managerSurnameEditText = FindViewById<EditText>(Resource.Id.managerSurnameEditText);
             EditText fantasyTeamEditText = FindViewById<EditText>(Resource.Id.fantasyTeamEditText);
-            Button saveButton = FindViewById<Button>(Resource.Id.saveButton);
-            Button cancelButton = FindViewById<Button>(Resource.Id.cancelButton);
+            Button saveButton = FindViewById<Button>(Resource.Id.registerTeamSaveButton);
+            Button cancelButton = FindViewById<Button>(Resource.Id.registerTeamCancelButton);
 
             // Assuming valid data from user, when save button is clicked, add fantasy team to DB and return user to main menu
             saveButton.Click += (sender, args) =>
@@ -71,7 +71,14 @@ namespace FiveASideTeamPickerApp
             // When cancel button is clicked, return to the main menu
             cancelButton.Click += (sender, args) =>
             {
-                ReturnToMainMenu();
+                // TODO - Remove method if not needed
+                //ReturnToMainMenu();
+
+                //FinishActivity(this);
+
+                // TODO - Test this method works as intented
+                // Exit the current activity - this will go back to the main menu as that will be at the top of the activity stack
+                Finish();
             };
         }
 

@@ -2,6 +2,9 @@
     <!--Misc. Values-->
     <string name="app_name">FiveASideTeamPickerApp</string>
     <string name="action_settings">Settings</string>
+    <string name="save_button_text">Save</string>
+    <string name="cancel_button_text">Cancel</string>
+    <string name="delete_button_text">Delete Selected</string>
 
     <!--Main Menu-->
     <string name="instructions_button_text">Instructions</string>
@@ -13,8 +16,6 @@
     <string name="manager_first_name_textview">Manager\'s First Name:</string>
     <string name="manager_surname_textview">Manager\'s Surname:</string>
     <string name="fantasy_team_textview">Fantasy Team Name:</string>
-    <string name="save_button_text">Save</string>
-    <string name="cancel_button_text">Cancel</string>
   
     <!--Delete Fantasy Team Menu-->
     <string name="delete_fantasy_team_prompt_textview">Since two fantasy teams already exist, please select one to be removed</string>
@@ -23,4 +24,11 @@
     <string name="app_reset_button_text">App Reset</string>
     <string name="admin_players_button_text">Add, Edit or Remove Players</string>
     <string name="admin_premier_teams_button_text">Add, Edit or Remove Premier Teams</string>
+
+    <!--Admin - Change Player Details-->
+    <string name="player_details_first_name_textview">Player\'s First Name:</string>
+    <string name="player_details_surname_textview">Player\'s Surname:</string>
+    <string name="player_details_position_textview">Player\'s Position:</string>
+    <string name="player_details_price_textview">Player\'s Price (£ million):</string>
+
 </resources>

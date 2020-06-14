@@ -45,7 +45,7 @@ namespace FiveASideTeamPickerApp
 
             adminPlayerButton.Click += (sender, args) =>
             {
-
+                StartActivity(typeof(AdminPlayersActivity));
             };
 
             adminPremierTeamButton.Click += (sender, args) =>

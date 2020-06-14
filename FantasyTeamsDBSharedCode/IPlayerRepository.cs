@@ -18,6 +18,7 @@ namespace FantasyTeamsDBSharedCode
         List<Player> GetAllPlayersExceptGoalkeepers();
         List<Player> GetAllGoalkeepers();
         List<Player> GetAllDefenders();
+        List<Player> GetAllPlayers();
         
 
         int InsertNewPlayer(Player player);
