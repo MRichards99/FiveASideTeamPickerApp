@@ -44,6 +44,7 @@ namespace FiveASideTeamPickerApp
             EditText playerPrice = FindViewById<EditText>(Resource.Id.playerDetailsPriceEditText);
             Button saveButton = FindViewById<Button>(Resource.Id.playerDetailsSaveButton);
             Button cancelButton = FindViewById<Button>(Resource.Id.playerDetailsCancelButton);
+            Button deleteButton = FindViewById<Button>(Resource.Id.playerDetailsDeleteButton);
 
             // Assign player's properties to the relevant editable text fields
             playerFirstName.Text = selectedPlayer.Firstname;
@@ -58,6 +59,12 @@ namespace FiveASideTeamPickerApp
                 // TODO - Test that updating a player's details actually works
                 playerRepository.UpdatePlayer(selectedPlayer);
 
+            };
+
+            deleteButton.Click += (sender, args) =>
+            {
+                // Remove player from the database
+                playerRepository.DeletePlayer(selectedPlayer);
             };
 
             cancelButton.Click += (sender, args) =>
