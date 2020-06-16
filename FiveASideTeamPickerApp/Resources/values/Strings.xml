@@ -24,6 +24,7 @@
     <string name="app_reset_button_text">App Reset</string>
     <string name="admin_players_button_text">Add, Edit or Remove Players</string>
     <string name="admin_premier_teams_button_text">Add, Edit or Remove Premier Teams</string>
+    <string name="admin_add_player_button_text">Add Player</string>
 
     <!--Admin - Change Player Details-->
     <string name="player_details_first_name_textview">Player\'s First Name:</string>

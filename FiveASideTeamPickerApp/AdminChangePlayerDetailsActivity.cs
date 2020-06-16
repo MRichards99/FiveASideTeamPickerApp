@@ -20,6 +20,7 @@ namespace FiveASideTeamPickerApp
     {
         private SQLitePositionRepository positionRepository;
         private SQLitePlayerRepository playerRepository;
+        private Player player;
 
         public AdminChangePlayerDetailsActivity()
         {
@@ -33,9 +34,7 @@ namespace FiveASideTeamPickerApp
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.AdminChangePlayerDetailsLayout);
 
-            // Get JSON serialised player and convert it back to a Player object
-            string jsonPlayer = this.Intent.GetStringExtra("selectedPlayer");
-            Player selectedPlayer = JsonConvert.DeserializeObject<Player>(jsonPlayer);
+            // TODO - Make premier team be able to be edited, perhaps select from a drop down?
 
             // Get view's resources
             EditText playerFirstName = FindViewById<EditText>(Resource.Id.playerDetailsFirstNameEditText);
@@ -46,25 +45,81 @@ namespace FiveASideTeamPickerApp
             Button cancelButton = FindViewById<Button>(Resource.Id.playerDetailsCancelButton);
             Button deleteButton = FindViewById<Button>(Resource.Id.playerDetailsDeleteButton);
 
-            // Assign player's properties to the relevant editable text fields
-            playerFirstName.Text = selectedPlayer.Firstname;
-            playerSurname.Text = selectedPlayer.Surname;
-            playerPrice.Text = selectedPlayer.Price.ToString();
-            // Get position name from database
-            string selectedPlayerPosition = positionRepository.GetPositionNameByID(selectedPlayer.PositionID);
-            playerPosition.Text = selectedPlayerPosition;
+            string pageType = this.Intent.GetStringExtra("type");
+            if (pageType == "existing")
+            {
+                // Get JSON serialised player and convert it back to a Player object
+                string jsonPlayer = this.Intent.GetStringExtra("selectedPlayer");
+                player = JsonConvert.DeserializeObject<Player>(jsonPlayer);
+
+                // Assign player's properties to the relevant editable text fields
+                playerFirstName.Text = player.Firstname;
+                playerSurname.Text = player.Surname;
+                playerPrice.Text = player.Price.ToString();
+                // Get position name from database
+                string selectedPlayerPosition = positionRepository.GetPositionNameByID(player.PositionID);
+                playerPosition.Text = selectedPlayerPosition;
+            }
+            // If type is not existing, assume its "new" as the app won't have player details to assign to the text fields
+            else
+            {
+                player = new Player();
+            }
 
             saveButton.Click += (sender, args) =>
             {
-                // TODO - Test that updating a player's details actually works
-                playerRepository.UpdatePlayer(selectedPlayer);
+                // Update player object with user's inputs from text fields
+                player.Firstname = playerFirstName.Text;
+                player.Surname = playerSurname.Text;
+                player.Price = Convert.ToDouble(playerPrice.Text);
 
+                Intent updatedPlayerIntent = new Intent();
+
+                if (pageType == "existing")
+                {
+                    // TODO - Fix trying to compare the two objects before going off to DB, or remove it
+
+                    /*
+                    // Check if the user has updated any aspects of the player to avoid unneeded DB traffic
+                  
+                    string originalPlayer = this.Intent.GetStringExtra("selectedPlayer");
+                    string editedPlayer = JsonConvert.SerializeObject(player);
+
+                    if (originalPlayer == editedPlayer)
+                    {
+                        Console.WriteLine("THEYRE THE SAME");
+                    }
+                    else
+                    {
+                        Console.WriteLine("DIFFERENT");
+                    }
+                    */
+
+                    playerRepository.UpdatePlayer(player);
+                    updatedPlayerIntent.PutExtra("type", "existing");
+
+                }
+                else if (pageType == "new")
+                {
+                    // TODO - Make inserting new players actually work
+
+                    playerRepository.InsertNewPlayer(player);
+                    updatedPlayerIntent.PutExtra("type", "new");
+                }
+
+                // Allow the updated player object to be sent back to AdminPlayersActivity so list view can be updated
+
+                string updatedPlayerJson = JsonConvert.SerializeObject(player);
+                updatedPlayerIntent.PutExtra("updatedPlayer", updatedPlayerJson);
+
+                SetResult(Result.Ok, updatedPlayerIntent);
+                Finish();
             };
 
             deleteButton.Click += (sender, args) =>
             {
                 // Remove player from the database
-                playerRepository.DeletePlayer(selectedPlayer);
+                playerRepository.DeletePlayer(player);
             };
 
             cancelButton.Click += (sender, args) =>

@@ -34,7 +34,7 @@ namespace FiveASideTeamPickerApp
             {
                 return _players[index];
             }
-        } 
+        }
 
         public override int Count
         {
@@ -81,6 +81,21 @@ namespace FiveASideTeamPickerApp
             playerPremierTeam.Text = premierTeamName;
              
             return view;
+        }
+
+        public void UpdatePlayer(int index, Player player)
+        {
+            // Cannot add a setter to `this[int index]` as this would invalid the method from BaseAdapter
+            _players[index] = player;
+
+            // Automatically refresh the data view
+            this.NotifyDataSetChanged();
+        }
+
+        public void AddPlayer(Player player)
+        {
+            _players.Add(player);
+            _players.OrderBy(s => s.Surname).ToList();
         }
     }
 }
