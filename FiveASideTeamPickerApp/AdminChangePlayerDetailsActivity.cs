@@ -64,6 +64,8 @@ namespace FiveASideTeamPickerApp
             else
             {
                 player = new Player();
+                // If a player doesn't exist, then they cannot be deleted
+                deleteButton.Enabled = false;
             }
 
             saveButton.Click += (sender, args) =>

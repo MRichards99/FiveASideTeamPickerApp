@@ -15,11 +15,24 @@ namespace FiveASideTeamPickerApp
     [Activity(Label = "PickTeamsActivity")]
     public class PickTeamsActivity : Activity
     {
+        TextView currentManagerTurn;
+        ListView selectablePlayers;
+
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
 
-            // Create your application here
+            SetContentView(Resource.Layout.PickTeams);
+
+            currentManagerTurn = FindViewById<TextView>(Resource.Id.currentManagerTurn);
+            selectablePlayers = FindViewById<ListView>(Resource.Id.selectablePlayers);
+            Button nextTurnButton = FindViewById<Button>(Resource.Id.nextTurnButton);
+            
+
+            //
+            
         }
+
+        void SelectManagerToPickPlayer()
     }
 }

@@ -4005,6 +4005,9 @@ namespace FiveASideTeamPickerApp
 			// aapt resource value: 0x7f0900a4
 			public const int coordinator = 2131296420;
 			
+			// aapt resource value: 0x7f0900c4
+			public const int currentManagerTurn = 2131296452;
+			
 			// aapt resource value: 0x7f09006d
 			public const int custom = 2131296365;
 			
@@ -4062,11 +4065,11 @@ namespace FiveASideTeamPickerApp
 			// aapt resource value: 0x7f090072
 			public const int expanded_menu = 2131296370;
 			
-			// aapt resource value: 0x7f0900c7
-			public const int fantasyTeamEditText = 2131296455;
+			// aapt resource value: 0x7f0900cc
+			public const int fantasyTeamEditText = 2131296460;
 			
-			// aapt resource value: 0x7f0900c6
-			public const int fantasyTeamTextView = 2131296454;
+			// aapt resource value: 0x7f0900cb
+			public const int fantasyTeamTextView = 2131296459;
 			
 			// aapt resource value: 0x7f090050
 			public const int fill = 2131296336;
@@ -4131,32 +4134,35 @@ namespace FiveASideTeamPickerApp
 			// aapt resource value: 0x7f090018
 			public const int line3 = 2131296280;
 			
+			// aapt resource value: 0x7f0900c2
+			public const int linearLayout1 = 2131296450;
+			
 			// aapt resource value: 0x7f09001d
 			public const int listMode = 2131296285;
 			
 			// aapt resource value: 0x7f090061
 			public const int list_item = 2131296353;
 			
-			// aapt resource value: 0x7f0900c3
-			public const int managerFirstNameEditText = 2131296451;
+			// aapt resource value: 0x7f0900c8
+			public const int managerFirstNameEditText = 2131296456;
 			
-			// aapt resource value: 0x7f0900c2
-			public const int managerFirstNameTextView = 2131296450;
+			// aapt resource value: 0x7f0900c7
+			public const int managerFirstNameTextView = 2131296455;
 			
-			// aapt resource value: 0x7f0900c5
-			public const int managerSurnameEditText = 2131296453;
+			// aapt resource value: 0x7f0900ca
+			public const int managerSurnameEditText = 2131296458;
 			
-			// aapt resource value: 0x7f0900c4
-			public const int managerSurnameTextView = 2131296452;
+			// aapt resource value: 0x7f0900c9
+			public const int managerSurnameTextView = 2131296457;
 			
-			// aapt resource value: 0x7f0900cc
-			public const int masked = 2131296460;
+			// aapt resource value: 0x7f0900d1
+			public const int masked = 2131296465;
 			
 			// aapt resource value: 0x7f0900b5
 			public const int media_actions = 2131296437;
 			
-			// aapt resource value: 0x7f0900ca
-			public const int message = 2131296458;
+			// aapt resource value: 0x7f0900cf
+			public const int message = 2131296463;
 			
 			// aapt resource value: 0x7f090031
 			public const int middle = 2131296305;
@@ -4172,6 +4178,9 @@ namespace FiveASideTeamPickerApp
 			
 			// aapt resource value: 0x7f09003b
 			public const int never = 2131296315;
+			
+			// aapt resource value: 0x7f0900c6
+			public const int nextTurnButton = 2131296454;
 			
 			// aapt resource value: 0x7f090022
 			public const int none = 2131296290;
@@ -4251,11 +4260,11 @@ namespace FiveASideTeamPickerApp
 			// aapt resource value: 0x7f09008d
 			public const int registerTeamButton = 2131296397;
 			
-			// aapt resource value: 0x7f0900c9
-			public const int registerTeamCancelButton = 2131296457;
+			// aapt resource value: 0x7f0900ce
+			public const int registerTeamCancelButton = 2131296462;
 			
-			// aapt resource value: 0x7f0900c8
-			public const int registerTeamSaveButton = 2131296456;
+			// aapt resource value: 0x7f0900cd
+			public const int registerTeamSaveButton = 2131296461;
 			
 			// aapt resource value: 0x7f09004a
 			public const int right = 2131296330;
@@ -4325,6 +4334,9 @@ namespace FiveASideTeamPickerApp
 			
 			// aapt resource value: 0x7f09008a
 			public const int select_dialog_listview = 2131296394;
+			
+			// aapt resource value: 0x7f0900c5
+			public const int selectablePlayers = 2131296453;
 			
 			// aapt resource value: 0x7f090074
 			public const int shortcut = 2131296372;
@@ -4440,6 +4452,9 @@ namespace FiveASideTeamPickerApp
 			// aapt resource value: 0x7f090013
 			public const int transition_transform = 2131296275;
 			
+			// aapt resource value: 0x7f0900c3
+			public const int turnTextView = 2131296451;
+			
 			// aapt resource value: 0x7f09002d
 			public const int uniform = 2131296301;
 			
@@ -4452,8 +4467,8 @@ namespace FiveASideTeamPickerApp
 			// aapt resource value: 0x7f090016
 			public const int view_offset_helper = 2131296278;
 			
-			// aapt resource value: 0x7f0900cb
-			public const int visible = 2131296459;
+			// aapt resource value: 0x7f0900d0
+			public const int visible = 2131296464;
 			
 			// aapt resource value: 0x7f09003c
 			public const int withText = 2131296316;
@@ -4698,22 +4713,25 @@ namespace FiveASideTeamPickerApp
 			public const int notification_template_part_time = 2130968635;
 			
 			// aapt resource value: 0x7f04003c
-			public const int RegisterTeam = 2130968636;
+			public const int PickTeams = 2130968636;
 			
 			// aapt resource value: 0x7f04003d
-			public const int select_dialog_item_material = 2130968637;
+			public const int RegisterTeam = 2130968637;
 			
 			// aapt resource value: 0x7f04003e
-			public const int select_dialog_multichoice_material = 2130968638;
+			public const int select_dialog_item_material = 2130968638;
 			
 			// aapt resource value: 0x7f04003f
-			public const int select_dialog_singlechoice_material = 2130968639;
+			public const int select_dialog_multichoice_material = 2130968639;
 			
 			// aapt resource value: 0x7f040040
-			public const int support_simple_spinner_dropdown_item = 2130968640;
+			public const int select_dialog_singlechoice_material = 2130968640;
 			
 			// aapt resource value: 0x7f040041
-			public const int tooltip = 2130968641;
+			public const int support_simple_spinner_dropdown_item = 2130968641;
+			
+			// aapt resource value: 0x7f040042
+			public const int tooltip = 2130968642;
 			
 			static Layout()
 			{
@@ -4856,23 +4874,23 @@ namespace FiveASideTeamPickerApp
 			// aapt resource value: 0x7f0a0029
 			public const int action_settings = 2131361833;
 			
-			// aapt resource value: 0x7f0a0038
-			public const int admin_add_player_button_text = 2131361848;
+			// aapt resource value: 0x7f0a003a
+			public const int admin_add_player_button_text = 2131361850;
 			
 			// aapt resource value: 0x7f0a0030
 			public const int admin_interface_button_text = 2131361840;
 			
-			// aapt resource value: 0x7f0a0036
-			public const int admin_players_button_text = 2131361846;
+			// aapt resource value: 0x7f0a0038
+			public const int admin_players_button_text = 2131361848;
 			
-			// aapt resource value: 0x7f0a0037
-			public const int admin_premier_teams_button_text = 2131361847;
+			// aapt resource value: 0x7f0a0039
+			public const int admin_premier_teams_button_text = 2131361849;
 			
 			// aapt resource value: 0x7f0a0028
 			public const int app_name = 2131361832;
 			
-			// aapt resource value: 0x7f0a0035
-			public const int app_reset_button_text = 2131361845;
+			// aapt resource value: 0x7f0a0037
+			public const int app_reset_button_text = 2131361847;
 			
 			// aapt resource value: 0x7f0a001e
 			public const int appbar_scrolling_view_behavior = 2131361822;
@@ -4889,8 +4907,8 @@ namespace FiveASideTeamPickerApp
 			// aapt resource value: 0x7f0a002c
 			public const int delete_button_text = 2131361836;
 			
-			// aapt resource value: 0x7f0a0034
-			public const int delete_fantasy_team_prompt_textview = 2131361844;
+			// aapt resource value: 0x7f0a0036
+			public const int delete_fantasy_team_prompt_textview = 2131361846;
 			
 			// aapt resource value: 0x7f0a0033
 			public const int fantasy_team_textview = 2131361843;
@@ -4906,6 +4924,9 @@ namespace FiveASideTeamPickerApp
 			
 			// aapt resource value: 0x7f0a0032
 			public const int manager_surname_textview = 2131361842;
+			
+			// aapt resource value: 0x7f0a0035
+			public const int next_turn_button_text = 2131361845;
 			
 			// aapt resource value: 0x7f0a0021
 			public const int password_toggle_content_description = 2131361825;
@@ -4925,20 +4946,20 @@ namespace FiveASideTeamPickerApp
 			// aapt resource value: 0x7f0a002f
 			public const int pick_teams_button_text = 2131361839;
 			
-			// aapt resource value: 0x7f0a003d
-			public const int player_details_delete_button = 2131361853;
-			
-			// aapt resource value: 0x7f0a0039
-			public const int player_details_first_name_textview = 2131361849;
+			// aapt resource value: 0x7f0a003f
+			public const int player_details_delete_button = 2131361855;
 			
 			// aapt resource value: 0x7f0a003b
-			public const int player_details_position_textview = 2131361851;
+			public const int player_details_first_name_textview = 2131361851;
+			
+			// aapt resource value: 0x7f0a003d
+			public const int player_details_position_textview = 2131361853;
+			
+			// aapt resource value: 0x7f0a003e
+			public const int player_details_price_textview = 2131361854;
 			
 			// aapt resource value: 0x7f0a003c
-			public const int player_details_price_textview = 2131361852;
-			
-			// aapt resource value: 0x7f0a003a
-			public const int player_details_surname_textview = 2131361850;
+			public const int player_details_surname_textview = 2131361852;
 			
 			// aapt resource value: 0x7f0a002e
 			public const int register_teams_button_text = 2131361838;
@@ -4951,6 +4972,9 @@ namespace FiveASideTeamPickerApp
 			
 			// aapt resource value: 0x7f0a0026
 			public const int status_bar_notification_info_overflow = 2131361830;
+			
+			// aapt resource value: 0x7f0a0034
+			public const int turn_textview = 2131361844;
 			
 			static String()
 			{
