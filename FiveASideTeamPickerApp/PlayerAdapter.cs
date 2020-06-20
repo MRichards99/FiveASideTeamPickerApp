@@ -11,21 +11,33 @@ using Android.Views;
 using Android.Widget;
 using FantasyTeamsDBSharedCode;
 using FantasyTeamsDBSharedCode.SQLite_Implementation;
-
+using static FantasyTeamsDBSharedCode.Player;
 
 namespace FiveASideTeamPickerApp
 {
     public class PlayerAdapter : BaseAdapter<Player>
     {
-        private readonly Activity _context;
-        private readonly List<Player> _players;
-        private SQLitePremierTeamRepository premierTeamRepository;
+        // Defining delegates to be used with this adapter
+        public delegate List<Player> NoParameterPlayerDelegate();
+        public delegate List<Player> PositionPlayerDelegate(Position position);
 
-        public PlayerAdapter(Activity context, IEnumerable<Player> players)
+        // TODO - Should I change all my private variables to private readonly and start with underscores?
+        private readonly Activity _context;
+        private List<Player> _players;
+        private readonly int _listViewLayout;
+
+        // TODO - Check if these variable should be private or not and make it consistent across the files
+        private SQLitePremierTeamRepository premierTeamRepository;
+        private SQLitePositionRepository positionRepository;
+
+        public PlayerAdapter(Activity context, IEnumerable<Player> players, int listViewLayout)
         {
             this._context = context;
             this._players = players.OrderBy(s => s.Surname).ToList();
+            this._listViewLayout = listViewLayout;
+
             this.premierTeamRepository = new SQLitePremierTeamRepository();
+            this.positionRepository = new SQLitePositionRepository();
         }
 
         public override Player this[int index]
@@ -56,29 +68,25 @@ namespace FiveASideTeamPickerApp
             // Create a view if one doesn't already exist
             if (view == null)
             { 
-                view = _context.LayoutInflater.Inflate(Android.Resource.Layout.SimpleListItem2, null);
+                view = _context.LayoutInflater.Inflate(this._listViewLayout, null);
             }
 
             // Get player and the two text fields that'll display player data
             Player player = _players[index];
-            TextView playerName = view.FindViewById<TextView>(Android.Resource.Id.Text1);
-            TextView playerPremierTeam = view.FindViewById<TextView>(Android.Resource.Id.Text2);
+            TextView playerNameAndTeam = view.FindViewById<TextView>(Android.Resource.Id.Text1);
+            TextView playerAdditionalDetails = view.FindViewById<TextView>(Android.Resource.Id.Text2);
 
             // TODO - decide if I wish to change any other properties of the text fields
 
             // Change formatting of TextView depending on if firstname is empty or not
             // An empty first name means the TextView doesn't need a space to separate first and last names
-            if (string.IsNullOrEmpty(player.Firstname))
-            {
-                // Blank firstname
-                playerName.Text = player.Surname;
-            }
-            else
-            {
-                playerName.Text = player.Firstname + " " + player.Surname;
-            }
             string premierTeamName = premierTeamRepository.GetPremierTeamNameFromID(player.PremierTeamID);
-            playerPremierTeam.Text = premierTeamName;
+            playerNameAndTeam.Text = NameTeamTextFormatting.FormatNameAndTeam(player.Firstname, player.Surname, premierTeamName);
+
+            // Add position and player's price onto second line of text
+            string playerPositionName = positionRepository.GetPositionNameByID(player.PositionID);
+            // TODO - Change all of these to formatted strings
+            playerAdditionalDetails.Text = playerPositionName + ", £" + player.Price + " million";
              
             return view;
         }
@@ -96,6 +104,32 @@ namespace FiveASideTeamPickerApp
         {
             _players.Add(player);
             _players.OrderBy(s => s.Surname).ToList();
+        }
+
+        public void RemoveAllPlayers()
+        {
+            _players.Clear();       
+        }
+
+        public void AppendToPlayerList(NoParameterPlayerDelegate databaseQuery)
+        {
+            List<Player> queryResult = databaseQuery().OrderBy(s => s.Surname).ToList();
+            foreach (Player player in queryResult)
+            {
+                AddPlayer(player);
+            }
+        }
+
+        public void AppendToPlayerList(PositionPlayerDelegate databaseQuery, Position position)
+        {
+            // TODO - Can we do away with RebuildPlayerList?
+            List<Player> queryResult = databaseQuery(position).OrderBy(s => s.Surname).ToList();
+
+            foreach (Player player in queryResult)
+            {
+                // Appending to the list means the data can be rebuilt from scratch (used with RemoveAllPlayers()) or added to when needed
+                AddPlayer(player);
+            }
         }
     }
 }

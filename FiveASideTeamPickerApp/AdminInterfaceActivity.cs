@@ -18,11 +18,13 @@ namespace FiveASideTeamPickerApp
     public class AdminInterfaceActivity : Activity
     {
         SQLiteFantasyTeamRepository fantasyTeamRepository;
+        SQLitePlayerRepository playerRepository;
 
         public AdminInterfaceActivity()
         {
             // TODO - Add comment about creating relevant repos across the different activities
             fantasyTeamRepository = new SQLiteFantasyTeamRepository();
+            playerRepository = new SQLitePlayerRepository();
         }
 
         protected override void OnCreate(Bundle savedInstanceState)
@@ -61,10 +63,15 @@ namespace FiveASideTeamPickerApp
                 fantasyTeamRepository.RemoveFantasyTeam(team);
             }
 
-            // TODO - Implement making all players selectable again
+            List<Player> fantasyTeamPlayers = playerRepository.GetAllPlayersAssignedToFantasyTeams();
+            foreach (Player player in fantasyTeamPlayers)
+            {
+                player.FantasyTeamID = 0;
+                playerRepository.UpdatePlayer(player);
+            }
 
             // Alert user that app reset has taken place
-            // TODO - Transfer message into strings.xml
+            // TODO - Transfer all toast messages into strings.xml
             Toast.MakeText(this, "All fantasy teams have been removed and all players are now selectable", ToastLength.Short).Show();
         }
     }

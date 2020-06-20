@@ -62,11 +62,14 @@
     <Compile Include="DeleteFantasyTeamActivity.cs" />
     <Compile Include="InstructionsActivity.cs" />
     <Compile Include="MainActivity.cs" />
+    <Compile Include="NameTeamTextFormatting.cs" />
     <Compile Include="PickTeamsActivity.cs" />
     <Compile Include="PlayerAdapter.cs" />
     <Compile Include="RegisterTeamActivity.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Stage.cs" />
+    <Compile Include="Stages.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />

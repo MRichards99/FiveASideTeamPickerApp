@@ -10,18 +10,26 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using SQLite;
+using FantasyTeamsDBSharedCode.SQLite_Implementation;
 
 namespace FantasyTeamsDBSharedCode
 {
     [Table("Positions")]
     public class Position
     {
+        // TODO - Remove all commented backing fields if not needed
         //private int positionID;
         private string positionName;
 
         public Position()
         {
 
+        }
+
+        public Position(int positionID)
+        {
+            this.PositionID = positionID;
+            this.PositionName = new SQLitePositionRepository().GetPositionNameByID(this.PositionID);
         }
 
         [PrimaryKey, AutoIncrement]
@@ -35,6 +43,8 @@ namespace FantasyTeamsDBSharedCode
                 {
                     throw new ArgumentOutOfRangeException(nameof(value), "Position cannot be more than 20 characters");
                 }
+
+                // TODO - Review this, is this validation any good?
                 List<string> validPositions = new List<string> { "Goalkeeper", "Defender", "Midfielder", "Forward" };
                 if (validPositions.Contains(value) != true)
                 {

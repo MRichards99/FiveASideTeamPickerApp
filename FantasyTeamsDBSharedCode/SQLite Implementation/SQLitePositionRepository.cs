@@ -27,9 +27,14 @@ namespace FantasyTeamsDBSharedCode.SQLite_Implementation
             throw new NotImplementedException();
         }
 
+        public Position GetPositionByID(int positionID)
+        {
+            return dbConnection.Table<Position>().SingleOrDefault(c => c.PositionID == positionID);
+        }
+
         public string GetPositionNameByID(int positionID)
         {
-            Position positionFromDB = dbConnection.Table<Position>().SingleOrDefault(c => c.PositionID == positionID);
+            Position positionFromDB = GetPositionByID(positionID);
             return positionFromDB.PositionName;
         }
     }

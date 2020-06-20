@@ -113,8 +113,9 @@ namespace FiveASideTeamPickerApp
 
                 string updatedPlayerJson = JsonConvert.SerializeObject(player);
                 updatedPlayerIntent.PutExtra("updatedPlayer", updatedPlayerJson);
-
-                SetResult(Result.Ok, updatedPlayerIntent);
+                
+                // TODO - Delete intent code
+                SetResult(Result.Ok);
                 Finish();
             };
 

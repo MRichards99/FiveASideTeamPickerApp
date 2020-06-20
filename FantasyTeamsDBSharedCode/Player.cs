@@ -16,6 +16,7 @@ namespace FantasyTeamsDBSharedCode
     [Table("Players")]
     public class Player
     {
+
         //private int playerID;
         private string firstName;
         private string surname;
@@ -26,7 +27,7 @@ namespace FantasyTeamsDBSharedCode
 
         public Player()
         {
-
+            // TODO - Implement constructors on all these classes
         }
 
         [PrimaryKey, AutoIncrement]

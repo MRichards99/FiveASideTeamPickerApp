@@ -64,6 +64,7 @@ namespace FiveASideTeamPickerApp
                 }
                 else
                 {
+
                     StartActivity(typeof(PickTeamsActivity));
                 }
             };

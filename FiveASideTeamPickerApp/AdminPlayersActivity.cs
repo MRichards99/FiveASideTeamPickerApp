@@ -49,19 +49,30 @@ namespace FiveASideTeamPickerApp
             };
 
             players = playerRepository.GetAllPlayers();
-            playerListAdapter = new PlayerAdapter(this, players);
+            playerListAdapter = new PlayerAdapter(this, players, Android.Resource.Layout.SimpleListItem2);
             playerList.Adapter = playerListAdapter;
             playerList.ItemClick += ClickEventOnItemInListView;
         }
 
         protected override void OnActivityResult(int requestCode, [GeneratedEnum] Result resultCode, Intent data)
         {
+            // TODO - This should only be done when a player has been updated, not when the cancel or back buttons are pressed
+            // TODO - The entire list should be rebuilt each time - in "existing" type, you have to work out if a player has been updated or deleted, better to rebuild the list from DB
+
             base.OnActivityResult(requestCode, resultCode, data);
 
+            // TODO - Look for recommended line length for C# and follow it
+
+            // Rebuild data in list view
+            playerListAdapter.RemoveAllPlayers();
+            playerListAdapter.AppendToPlayerList(new PlayerAdapter.NoParameterPlayerDelegate(playerRepository.GetAllPlayers));
+
+            // TODO - Clear code from callback method
+
+            /*
             // Update player in the list adapter
             string updatedPlayerJson = data.GetStringExtra("updatedPlayer");
             Player updatedPlayer = JsonConvert.DeserializeObject<Player>(updatedPlayerJson);
-            Console.WriteLine("TRYING TO GET OLD INTENT TYPE TJHING");
             string callbackActivityType = data.GetStringExtra("type");
 
             if (callbackActivityType == "existing")
@@ -74,8 +85,9 @@ namespace FiveASideTeamPickerApp
                 // Add new player to the list
                 playerListAdapter.AddPlayer(updatedPlayer);
             }
+            */
 
-            // This makes the data aware that data has changed and the view needs to be refreshed as a result
+            // This makes the adapter aware that data has changed and the view needs to be refreshed as a result
             playerListAdapter.NotifyDataSetChanged();
         }
 
