@@ -44,11 +44,6 @@ namespace FantasyTeamsDBSharedCode.SQLite_Implementation
 
         public List<int> GetEligiblePremierTeams(int fantasyTeamID)
         {
-            // Get all premier team IDs
-            // For each premier team IDs
-            // See if the count of it when searching through the players is < 2
-            // If it is, add the premier team ID to a list and return that list
-            // GetNumberOfPlayersAssignedToFantasyTeamInPremierTeam()
             List<int> eligiblePremierTeamIDs = new List<int>();
 
             List<PremierTeam> allPremierTeams = GetAllPremierTeams();
@@ -57,8 +52,8 @@ namespace FantasyTeamsDBSharedCode.SQLite_Implementation
                 // TODO - Do a find on all Console statements and remove them
                 SQLitePlayerRepository playerRepository = new SQLitePlayerRepository();
                 int premierTeamPlayerAssignedCount = playerRepository.GetNumberOfPlayersAssignedToFantasyTeamInPremierTeam(premierTeam.PremierTeamID, fantasyTeamID);
-                //Console.WriteLine("MORE DEBUG");
-                //Console.WriteLine(premierTeamPlayerAssignedCount);
+
+                Console.WriteLine($"Fantasy Team ID: {fantasyTeamID}, Number of players in {premierTeam.PremierTeamName}: {premierTeamPlayerAssignedCount}");
                 if (premierTeamPlayerAssignedCount < 2)
                 {
                     eligiblePremierTeamIDs.Add(premierTeam.PremierTeamID);

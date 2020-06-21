@@ -74,7 +74,7 @@ namespace FiveASideTeamPickerApp
             string currentManagerFirstName = allFantasyTeams[currentManagerTurnPointer].ManagerFirstname;
             string currentManagerSurname = allFantasyTeams[currentManagerTurnPointer].ManagerSurname;
             string currentFantasyTeamName = allFantasyTeams[currentManagerTurnPointer].FantasyTeamName;
-            currentManagerTurnTextView.Text = NameTeamTextFormatting.FormatNameAndTeam(currentManagerFirstName, currentManagerSurname, currentFantasyTeamName) + ", " + currentManagerTurnPointer;
+            currentManagerTurnTextView.Text = NameTeamTextFormatting.FormatNameAndTeam(currentManagerFirstName, currentManagerSurname, currentFantasyTeamName);
 
             nextTurnButton.Click += (sender, args) =>
             {
@@ -85,6 +85,7 @@ namespace FiveASideTeamPickerApp
                 selectablePlayersList.SetSelection(-1);
                 */
 
+                Console.WriteLine("NEW TURN BUTTON CLICKED.");
 
                 // Assign selected player to the fantasy team
                 selectedPlayer.FantasyTeamID = allFantasyTeams[currentManagerTurnPointer].FantasyTeamID;
@@ -106,15 +107,17 @@ namespace FiveASideTeamPickerApp
                 }
                 else
                 {
+                    currentManagerTurnPointer = currentManagerTurnPointer ^ 1;
+
                     // Go to next turn
                     ArrangeNewTurn(selectablePlayersAdapter, allFantasyTeams);
-                    currentManagerTurnPointer = currentManagerTurnPointer ^ 1;
+                    
                 }
 
                 currentManagerFirstName = allFantasyTeams[currentManagerTurnPointer].ManagerFirstname;
                 currentManagerSurname = allFantasyTeams[currentManagerTurnPointer].ManagerSurname;
                 currentFantasyTeamName = allFantasyTeams[currentManagerTurnPointer].FantasyTeamName;
-                currentManagerTurnTextView.Text = NameTeamTextFormatting.FormatNameAndTeam(currentManagerFirstName, currentManagerSurname, currentFantasyTeamName) + ", " + currentManagerTurnPointer;
+                currentManagerTurnTextView.Text = NameTeamTextFormatting.FormatNameAndTeam(currentManagerFirstName, currentManagerSurname, currentFantasyTeamName);
 
                 // Data will have changed so list view needs refreshing - player selected or new stage, one or both
                 selectablePlayersAdapter.NotifyDataSetChanged();

@@ -71,8 +71,6 @@ namespace FantasyTeamsDBSharedCode.SQLite_Implementation
         {
             SQLitePremierTeamRepository premierTeamRepository = new SQLitePremierTeamRepository();
             List<int> eligiblePremierTeamIDs = premierTeamRepository.GetEligiblePremierTeams(fantasyTeamID);
-            //Console.WriteLine("ELI DEBUG");
-            //Console.WriteLine(eligiblePremierTeamIDs.Count());
             
             return dbConnection.Table<Player>().Where(p => p.PositionID == position.PositionID && p.FantasyTeamID == 0 && eligiblePremierTeamIDs.Contains(p.PremierTeamID)).ToList<Player>();
         }
