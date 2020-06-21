@@ -58,10 +58,13 @@ namespace FiveASideTeamPickerApp
 
         void ResetApp()
         {
+            // TODO - Re-enable this feature
+            /*
             List<FantasyTeam> allFantasyTeams = fantasyTeamRepository.GetAllFantasyTeams();
             foreach (FantasyTeam team in allFantasyTeams) {
                 fantasyTeamRepository.RemoveFantasyTeam(team);
             }
+            */
 
             List<Player> fantasyTeamPlayers = playerRepository.GetAllPlayersAssignedToFantasyTeams();
             foreach (Player player in fantasyTeamPlayers)

@@ -54,6 +54,11 @@ namespace FantasyTeamsDBSharedCode.SQLite_Implementation
             return dbConnection.Table<Player>().Where(p => p.PositionID != position.PositionID).ToList<Player>();
         }
 
+        public int GetNumberOfPlayersAssignedToFantasyTeamInPremierTeam(int premierTeamID, int fantasyTeamID)
+        {
+            return dbConnection.Table<Player>().Where(p => p.FantasyTeamID == fantasyTeamID && p.PremierTeamID == premierTeamID).Count();
+        }
+
         public Player GetPlayerByID(int playerID)
         {
             // TODO - Make all these methods consistent to just return the first line, don't bother with the variable
@@ -61,9 +66,15 @@ namespace FantasyTeamsDBSharedCode.SQLite_Implementation
             return player;
         }
 
-        public List<Player> GetSelectablePlayersOfAPositionType(Position position)
+        // TODO - Why does this appear to happen more than once?
+        public List<Player> GetSelectablePlayersForFantasyTeam(Position position, int fantasyTeamID)
         {
-            return dbConnection.Table<Player>().Where(p => p.PositionID == position.PositionID && p.FantasyTeamID == 0).ToList<Player>();
+            SQLitePremierTeamRepository premierTeamRepository = new SQLitePremierTeamRepository();
+            List<int> eligiblePremierTeamIDs = premierTeamRepository.GetEligiblePremierTeams(fantasyTeamID);
+            //Console.WriteLine("ELI DEBUG");
+            //Console.WriteLine(eligiblePremierTeamIDs.Count());
+            
+            return dbConnection.Table<Player>().Where(p => p.PositionID == position.PositionID && p.FantasyTeamID == 0 && eligiblePremierTeamIDs.Contains(p.PremierTeamID)).ToList<Player>();
         }
 
         public int InsertNewPlayer(Player player)

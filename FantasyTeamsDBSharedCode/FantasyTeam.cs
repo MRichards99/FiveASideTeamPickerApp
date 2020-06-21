@@ -17,7 +17,7 @@ namespace FantasyTeamsDBSharedCode
 
         }
 
-        public FantasyTeam(string teamName, string firstname, string surname)
+        public FantasyTeam(string firstname, string surname, string teamName)
         {
             FantasyTeamName = teamName;
             ManagerFirstname = firstname;

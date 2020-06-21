@@ -19,7 +19,7 @@ namespace FiveASideTeamPickerApp
     {
         // Defining delegates to be used with this adapter
         public delegate List<Player> NoParameterPlayerDelegate();
-        public delegate List<Player> PositionPlayerDelegate(Position position);
+        public delegate List<Player> PositionPlayerDelegate(Position position, int fantasyTeamID);
 
         // TODO - Should I change all my private variables to private readonly and start with underscores?
         private readonly Activity _context;
@@ -120,10 +120,10 @@ namespace FiveASideTeamPickerApp
             }
         }
 
-        public void AppendToPlayerList(PositionPlayerDelegate databaseQuery, Position position)
+        public void AppendToPlayerList(PositionPlayerDelegate databaseQuery, Position position, int fantasyTeamID)
         {
             // TODO - Can we do away with RebuildPlayerList?
-            List<Player> queryResult = databaseQuery(position).OrderBy(s => s.Surname).ToList();
+            List<Player> queryResult = databaseQuery(position, fantasyTeamID).OrderBy(s => s.Surname).ToList();
 
             foreach (Player player in queryResult)
             {

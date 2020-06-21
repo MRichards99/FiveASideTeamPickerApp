@@ -27,10 +27,10 @@ namespace FiveASideTeamPickerApp
 
         Player selectedPlayer;
 
-        // TODO - this might not be needed
-        int currentManagerTurn;
+        int currentManagerTurnPointer;
         int turnCounter;
         List<Position> currentSelectablePositions;
+        int stageManagerXOR;
 
         public PickTeamsActivity()
         {
@@ -63,33 +63,39 @@ namespace FiveASideTeamPickerApp
             List<Stage> stages = Stages.GetStagesOfTeamSelection();
 
             // Randomly select which manager should go first
-            int currentManagerTurn = SelectStartingManager();
+            currentManagerTurnPointer = SelectStartingManager();
 
             // Get fantasy teams
             List<FantasyTeam> allFantasyTeams = fantasyTeamRepository.GetAllFantasyTeams();
 
-            StageManagementWrapper(stages, selectablePlayersAdapter);
+            StageManagementWrapper(stages, selectablePlayersAdapter, allFantasyTeams);
             ArrangeNewTurn(selectablePlayersAdapter, allFantasyTeams);
+
+            string currentManagerFirstName = allFantasyTeams[currentManagerTurnPointer].ManagerFirstname;
+            string currentManagerSurname = allFantasyTeams[currentManagerTurnPointer].ManagerSurname;
+            string currentFantasyTeamName = allFantasyTeams[currentManagerTurnPointer].FantasyTeamName;
+            currentManagerTurnTextView.Text = NameTeamTextFormatting.FormatNameAndTeam(currentManagerFirstName, currentManagerSurname, currentFantasyTeamName) + ", " + currentManagerTurnPointer;
 
             nextTurnButton.Click += (sender, args) =>
             {
-                // TODO - Deselect item in list view
+                // TODO - Deselect item in list view and disable next turn button each time
                 // Deselect item when turn is finished
                 /*
                 selectablePlayersList.Selected = false;
                 selectablePlayersList.SetSelection(-1);
                 */
 
+
                 // Assign selected player to the fantasy team
-                selectedPlayer.FantasyTeamID = allFantasyTeams[currentManagerTurn].FantasyTeamID;
+                selectedPlayer.FantasyTeamID = allFantasyTeams[currentManagerTurnPointer].FantasyTeamID;
                 playerRepository.UpdatePlayer(selectedPlayer);
 
                 if (turnCounter == 2)
-                {                    
+                {
                     // Checking if there are uncompleted stages left
                     if (stages.Count != 0)
                     {
-                        StageManagementWrapper(stages, selectablePlayersAdapter);
+                        StageManagementWrapper(stages, selectablePlayersAdapter, allFantasyTeams);
                         turnCounter += 1;
                     }
                     else
@@ -102,7 +108,13 @@ namespace FiveASideTeamPickerApp
                 {
                     // Go to next turn
                     ArrangeNewTurn(selectablePlayersAdapter, allFantasyTeams);
+                    currentManagerTurnPointer = currentManagerTurnPointer ^ 1;
                 }
+
+                currentManagerFirstName = allFantasyTeams[currentManagerTurnPointer].ManagerFirstname;
+                currentManagerSurname = allFantasyTeams[currentManagerTurnPointer].ManagerSurname;
+                currentFantasyTeamName = allFantasyTeams[currentManagerTurnPointer].FantasyTeamName;
+                currentManagerTurnTextView.Text = NameTeamTextFormatting.FormatNameAndTeam(currentManagerFirstName, currentManagerSurname, currentFantasyTeamName) + ", " + currentManagerTurnPointer;
 
                 // Data will have changed so list view needs refreshing - player selected or new stage, one or both
                 selectablePlayersAdapter.NotifyDataSetChanged();
@@ -113,14 +125,13 @@ namespace FiveASideTeamPickerApp
             {
                 // Enable next turn button now a player has been selected
                 nextTurnButton.Enabled = true;
-                GetSelectedPlayer(args);
+                GetSelectedPlayer(args, selectablePlayersAdapter);
             };
+        }
 
-        void GetSelectedPlayer(AdapterView.ItemClickEventArgs args)
-            {
-                selectedPlayer = selectablePlayersAdapter[args.Position];
-            }
-
+        void GetSelectedPlayer(AdapterView.ItemClickEventArgs args, PlayerAdapter playerAdapter)
+        {
+            selectedPlayer = playerAdapter[args.Position];
         }
 
         int SelectStartingManager()
@@ -133,52 +144,48 @@ namespace FiveASideTeamPickerApp
 
             Random random = new Random();
             return random.Next(0, 2);
+
         }
 
         // TODO - Test that selectablePlayers isn't required to mess about with the data
-        void AssembleNewStage(Stage stage, PlayerAdapter playerAdapter)
+        void AssembleNewStage(Stage stage, PlayerAdapter playerAdapter, List<FantasyTeam> fantasyTeams)
         {
             // Reset turn counter and correct manager having the starting turn
             turnCounter = 0;
             // TODO - Comment my thoughts behind XOR of 0 and 1
-            currentManagerTurn ^= 0;
+            currentManagerTurnPointer ^= stageManagerXOR;
 
-            UpdateListOfPlayers(stage.SelectablePositions, playerAdapter);
+            UpdateListOfPlayers(stage.SelectablePositions, playerAdapter, fantasyTeams[currentManagerTurnPointer].FantasyTeamID);            
         }
 
         void ArrangeNewTurn(PlayerAdapter playerAdapter, List<FantasyTeam> fantasyTeams)
         {
             turnCounter += 1;
-            currentManagerTurn ^= 1;
+            
 
-            UpdateListOfPlayers(currentSelectablePositions, playerAdapter);
-
-            string currentManagerFirstName = fantasyTeams[currentManagerTurn].ManagerFirstname;
-            string currentManagerSurname = fantasyTeams[currentManagerTurn].ManagerSurname;
-            string currentFantasyTeamName = fantasyTeams[currentManagerTurn].FantasyTeamName;
-
-            currentManagerTurnTextView.Text = NameTeamTextFormatting.FormatNameAndTeam(currentManagerFirstName, currentManagerSurname, currentFantasyTeamName);
+            UpdateListOfPlayers(currentSelectablePositions, playerAdapter, fantasyTeams[currentManagerTurnPointer].FantasyTeamID);
         }
 
-        void UpdateListOfPlayers(List<Position> selectablePositions, PlayerAdapter playerAdapter)
+        void UpdateListOfPlayers(List<Position> selectablePositions, PlayerAdapter playerAdapter, int currentFantasyTeamTurnID)
         {
             // Remove all players so the data from this list view can be rebuilt
             playerAdapter.RemoveAllPlayers();
 
             foreach (Position position in selectablePositions)
             {
-                playerAdapter.AppendToPlayerList(new PlayerAdapter.PositionPlayerDelegate(playerRepository.GetSelectablePlayersOfAPositionType), position);
+                playerAdapter.AppendToPlayerList(new PlayerAdapter.PositionPlayerDelegate(playerRepository.GetSelectablePlayersForFantasyTeam), position, currentFantasyTeamTurnID);
             }
         }
 
-        private void StageManagementWrapper(List<Stage> stages, PlayerAdapter playerAdapter)
+        void StageManagementWrapper(List<Stage> stages, PlayerAdapter playerAdapter, List<FantasyTeam> fantasyTeams)
         {
             /*
             Wrapper method over the method calls that are used when preparing for a new stage
             */
 
+            stageManagerXOR = stages[0].StartingManager;
             // stages[0] will always contain the next stage
-            AssembleNewStage(stages[0], playerAdapter);
+            AssembleNewStage(stages[0], playerAdapter, fantasyTeams);
             // Set which positions can be selected, just before the stage is removed - data required for the next turn in the same stage
             currentSelectablePositions = stages[0].SelectablePositions;
             // Remove stage from the list now it's been assembled for the user

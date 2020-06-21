@@ -18,7 +18,7 @@
     <string name="fantasy_team_textview">Fantasy Team Name:</string>
   
     <!--Pick Team Menu-->
-    <string name="turn_textview">Turn:</string>
+    <string name="turn_textview">Turn: </string>
     <string name="next_turn_button_text">Next Turn</string>
   
     <!--Delete Fantasy Team Menu-->
