@@ -52,7 +52,7 @@ namespace FiveASideTeamPickerApp
 
             adminPremierTeamButton.Click += (sender, args) =>
             {
-
+                StartActivity(typeof(AdminPremierTeamListActivity));
             };
         }
 

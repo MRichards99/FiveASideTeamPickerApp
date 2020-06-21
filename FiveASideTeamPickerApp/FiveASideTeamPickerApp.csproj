@@ -59,6 +59,7 @@
     <Compile Include="AdminChangePlayerDetailsActivity.cs" />
     <Compile Include="AdminInterfaceActivity.cs" />
     <Compile Include="AdminPlayersActivity.cs" />
+    <Compile Include="AdminPremierTeamListActivity.cs" />
     <Compile Include="AppUtility.cs" />
     <Compile Include="DeleteFantasyTeamActivity.cs" />
     <Compile Include="InstructionsActivity.cs" />
@@ -66,6 +67,7 @@
     <Compile Include="NameTeamTextFormatting.cs" />
     <Compile Include="PickTeamsActivity.cs" />
     <Compile Include="PlayerAdapter.cs" />
+    <Compile Include="PremierTeamAdapter.cs" />
     <Compile Include="RegisterTeamActivity.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -143,6 +145,11 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\PickTeams.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\AdminPremierTeamListLayout.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>

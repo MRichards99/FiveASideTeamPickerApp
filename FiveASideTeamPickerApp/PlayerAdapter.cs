@@ -15,6 +15,7 @@ using static FantasyTeamsDBSharedCode.Player;
 
 namespace FiveASideTeamPickerApp
 {
+    // TODO - Should these adapters be in the other project?
     public class PlayerAdapter : BaseAdapter<Player>
     {
         // Defining delegates to be used with this adapter
@@ -33,9 +34,10 @@ namespace FiveASideTeamPickerApp
         public PlayerAdapter(Activity context, IEnumerable<Player> players, int listViewLayout)
         {
             this._context = context;
-            this._players = players.OrderBy(s => s.Surname).ToList();
+            this._players = players.OrderBy(p => p.Surname).ToList();
             this._listViewLayout = listViewLayout;
 
+            // TODO - Somewhere, one of these isn't in a constructor. It needs to be
             this.premierTeamRepository = new SQLitePremierTeamRepository();
             this.positionRepository = new SQLitePositionRepository();
         }
@@ -91,6 +93,7 @@ namespace FiveASideTeamPickerApp
             return view;
         }
 
+        // TODO - Check if each of these methods are implemented, delete the ones which aren't
         public void UpdatePlayer(int index, Player player)
         {
             // Cannot add a setter to `this[int index]` as this would invalid the method from BaseAdapter

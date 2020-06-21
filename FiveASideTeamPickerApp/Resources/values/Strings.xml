@@ -29,6 +29,7 @@
     <string name="admin_players_button_text">Add, Edit or Remove Players</string>
     <string name="admin_premier_teams_button_text">Add, Edit or Remove Premier Teams</string>
     <string name="admin_add_player_button_text">Add Player</string>
+    <string name="admin_add_premier_team_button_text">Add Premier Team</string>
 
     <!--Admin - Change Player Details-->
     <string name="player_details_first_name_textview">Player\'s First Name:</string>
@@ -36,4 +37,6 @@
     <string name="player_details_position_textview">Player\'s Position:</string>
     <string name="player_details_price_textview">Player\'s Price (£ million):</string>
     <string name="player_details_delete_button">Delete Player</string>
+  
+    <!--Admin - Change Premier Team Details-->
 </resources>
