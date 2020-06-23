@@ -42,6 +42,7 @@
     <string name="player_details_first_name_textview">Player\'s First Name:</string>
     <string name="player_details_surname_textview">Player\'s Surname:</string>
     <string name="player_details_position_textview">Player\'s Position:</string>
+    <string name="player_details_premier_team_textview">Player\'s Premier Team:</string>
     <string name="player_details_price_textview">Player\'s Price (£ million):</string>
     <string name="player_details_delete_button">Delete Player</string>
   

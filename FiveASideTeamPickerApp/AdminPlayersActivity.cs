@@ -45,7 +45,7 @@ namespace FiveASideTeamPickerApp
                 // Define that a new player needs to be created, so no existing player to send to the following activity
                 addNewPlayerIntent.PutExtra("type", "new");
 
-                StartActivity(typeof(AdminChangePlayerDetailsActivity));
+                StartActivityForResult(addNewPlayerIntent, 1);
             };
 
             players = playerRepository.GetAllPlayers();
@@ -56,9 +56,6 @@ namespace FiveASideTeamPickerApp
 
         protected override void OnActivityResult(int requestCode, [GeneratedEnum] Result resultCode, Intent data)
         {
-            // TODO - This should only be done when a player has been updated, not when the cancel or back buttons are pressed
-            // TODO - The entire list should be rebuilt each time - in "existing" type, you have to work out if a player has been updated or deleted, better to rebuild the list from DB
-
             base.OnActivityResult(requestCode, resultCode, data);
 
             // TODO - Look for recommended line length for C# and follow it
@@ -66,26 +63,6 @@ namespace FiveASideTeamPickerApp
             // Rebuild data in list view
             playerListAdapter.RemoveAllPlayers();
             playerListAdapter.AppendToPlayerList(new PlayerAdapter.NoParameterPlayerDelegate(playerRepository.GetAllPlayers));
-
-            // TODO - Clear code from callback method
-
-            /*
-            // Update player in the list adapter
-            string updatedPlayerJson = data.GetStringExtra("updatedPlayer");
-            Player updatedPlayer = JsonConvert.DeserializeObject<Player>(updatedPlayerJson);
-            string callbackActivityType = data.GetStringExtra("type");
-
-            if (callbackActivityType == "existing")
-            {
-                // Update only the single player that was changed by the user
-                playerListAdapter.UpdatePlayer(selectedPlayerIndex, updatedPlayer);
-            }
-            else if (callbackActivityType == "new")
-            {
-                // Add new player to the list
-                playerListAdapter.AddPlayer(updatedPlayer);
-            }
-            */
 
             // This makes the adapter aware that data has changed and the view needs to be refreshed as a result
             playerListAdapter.NotifyDataSetChanged();
@@ -109,8 +86,6 @@ namespace FiveASideTeamPickerApp
 
             // Need the player object to be called back so the list view can be updated
             StartActivityForResult(changePlayerDetailsIntent, 1);
-
-
         }
     }
 }

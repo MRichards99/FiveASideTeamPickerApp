@@ -63,6 +63,11 @@ namespace FantasyTeamsDBSharedCode.SQLite_Implementation
             return eligiblePremierTeamIDs;
         }
 
+        public int GetPremierTeamIDFromName(string premierTeamName)
+        {
+            return dbConnection.Table<PremierTeam>().SingleOrDefault(p => p.PremierTeamName == premierTeamName).PremierTeamID;
+        }
+
         public string GetPremierTeamNameFromID(int premierTeamID)
         {
             // TODO - Refactor so premier team is grabbed from GetPremierTeam()

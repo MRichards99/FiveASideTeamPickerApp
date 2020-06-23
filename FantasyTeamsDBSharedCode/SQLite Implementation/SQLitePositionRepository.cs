@@ -37,6 +37,11 @@ namespace FantasyTeamsDBSharedCode.SQLite_Implementation
             return dbConnection.Table<Position>().SingleOrDefault(c => c.PositionID == positionID);
         }
 
+        public int GetPositionIDFromName(string positionName)
+        {
+            return dbConnection.Table<Position>().SingleOrDefault(p => p.PositionName == positionName).PositionID;
+        }
+
         public string GetPositionNameByID(int positionID)
         {
             Position positionFromDB = GetPositionByID(positionID);

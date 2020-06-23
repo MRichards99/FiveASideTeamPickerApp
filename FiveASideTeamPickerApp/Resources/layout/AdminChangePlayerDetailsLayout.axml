@@ -39,6 +39,18 @@
 		android:minHeight="25px"
 		android:id="@+id/playerDetailsPositionSpinner" />
 	<TextView
+		android:text="@string/player_details_premier_team_textview"
+		android:textAppearance="?android:attr/textAppearanceMedium"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:id="@+id/playerDetailsPremierTeamTextView" />
+	<Spinner
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:minWidth="25px"
+		android:minHeight="25px"
+		android:id="@+id/playerDetailsPremierTeamSpinner" />
+	<TextView
 		android:text="@string/player_details_price_textview"
 		android:textAppearance="?android:attr/textAppearanceMedium"
 		android:layout_width="match_parent"

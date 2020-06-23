@@ -22,5 +22,6 @@ namespace FantasyTeamsDBSharedCode
         string GetPremierTeamNameFromID(int premierTeamID);
         List<int> GetEligiblePremierTeams(int fantasyTeamID);
         List<PremierTeam> GetAllPremierTeams();
+        int GetPremierTeamIDFromName(string premierTeamName);
     }
 }

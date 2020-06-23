@@ -20,13 +20,17 @@ namespace FiveASideTeamPickerApp
     {
         private SQLitePositionRepository positionRepository;
         private SQLitePlayerRepository playerRepository;
+        private SQLitePremierTeamRepository premierTeamRepository;
         private Player player;
+
+        string selectedPositionName;
 
         public AdminChangePlayerDetailsActivity()
         {
             // TODO - Change all constructors which create a new repo to use this keyword
             positionRepository = new SQLitePositionRepository();
             playerRepository = new SQLitePlayerRepository();
+            premierTeamRepository = new SQLitePremierTeamRepository();
         }
 
         protected override void OnCreate(Bundle savedInstanceState)
@@ -40,6 +44,7 @@ namespace FiveASideTeamPickerApp
             EditText playerFirstName = FindViewById<EditText>(Resource.Id.playerDetailsFirstNameEditText);
             EditText playerSurname = FindViewById<EditText>(Resource.Id.playerDetailsSurnameEditText);
             Spinner playerPosition = FindViewById<Spinner>(Resource.Id.playerDetailsPositionSpinner);
+            Spinner playerPremierTeam = FindViewById<Spinner>(Resource.Id.playerDetailsPremierTeamSpinner);
             EditText playerPrice = FindViewById<EditText>(Resource.Id.playerDetailsPriceEditText);
             Button saveButton = FindViewById<Button>(Resource.Id.playerDetailsSaveButton);
             Button cancelButton = FindViewById<Button>(Resource.Id.playerDetailsCancelButton);
@@ -56,6 +61,18 @@ namespace FiveASideTeamPickerApp
             positionSpinnerAdapter.SetDropDownViewResource(Android.Resource.Layout.SimpleSpinnerDropDownItem);
             playerPosition.Adapter = positionSpinnerAdapter;
 
+            // Get selectable premier teams for spinner and populate spinner with them
+            List<PremierTeam> premierTeams = premierTeamRepository.GetAllPremierTeams();
+            List<string> premierTeamNamesArray = new List<string>();
+            foreach (PremierTeam premierTeam in premierTeams)
+            {
+                premierTeamNamesArray.Add(premierTeam.PremierTeamName);
+            }
+            ArrayAdapter<string> premierTeamSpinnerAdapter = new ArrayAdapter<string>(this, Android.Resource.Layout.SimpleSpinnerItem, premierTeamNamesArray);
+            premierTeamSpinnerAdapter.SetDropDownViewResource(Android.Resource.Layout.SimpleSpinnerDropDownItem);
+            playerPremierTeam.Adapter = premierTeamSpinnerAdapter;
+
+
             string pageType = this.Intent.GetStringExtra("type");
             if (pageType == "existing")
             {
@@ -69,9 +86,10 @@ namespace FiveASideTeamPickerApp
                 playerPrice.Text = player.Price.ToString();
                 // Get position name from database
                 string selectedPlayerPosition = positionRepository.GetPositionNameByID(player.PositionID);
-
                 playerPosition.SetSelection(positionSpinnerAdapter.GetPosition(selectedPlayerPosition));
-                //Console.WriteLine($"Selected position: {playerPosition.SelectedItem.ToString()}");
+
+                string selectedPlayerPremierTeam = premierTeamRepository.GetPremierTeamNameFromID(player.PremierTeamID);
+                playerPremierTeam.SetSelection(premierTeamSpinnerAdapter.GetPosition(selectedPlayerPremierTeam));
             }
             // If type is not existing, assume its "new" as the app won't have player details to assign to the text fields
             else
@@ -87,8 +105,8 @@ namespace FiveASideTeamPickerApp
                 player.Firstname = playerFirstName.Text;
                 player.Surname = playerSurname.Text;
                 player.Price = Convert.ToDouble(playerPrice.Text);
-
-                Intent updatedPlayerIntent = new Intent();
+                player.PositionID = positionRepository.GetPositionIDFromName(playerPosition.SelectedItem.ToString());
+                player.PremierTeamID = premierTeamRepository.GetPremierTeamIDFromName(playerPremierTeam.SelectedItem.ToString());
 
                 if (pageType == "existing")
                 {
@@ -111,21 +129,12 @@ namespace FiveASideTeamPickerApp
                     */
 
                     playerRepository.UpdatePlayer(player);
-                    updatedPlayerIntent.PutExtra("type", "existing");
-
                 }
                 else if (pageType == "new")
                 {
-                    // TODO - Make inserting new players actually work
-
+                    player.FantasyTeamID = 0;
                     playerRepository.InsertNewPlayer(player);
-                    updatedPlayerIntent.PutExtra("type", "new");
                 }
-
-                // Allow the updated player object to be sent back to AdminPlayersActivity so list view can be updated
-
-                string updatedPlayerJson = JsonConvert.SerializeObject(player);
-                updatedPlayerIntent.PutExtra("updatedPlayer", updatedPlayerJson);
                 
                 // TODO - Delete intent code
                 SetResult(Result.Ok);
@@ -136,6 +145,8 @@ namespace FiveASideTeamPickerApp
             {
                 // Remove player from the database
                 playerRepository.DeletePlayer(player);
+                SetResult(Result.Ok);
+                Finish();
             };
 
             cancelButton.Click += (sender, args) =>
