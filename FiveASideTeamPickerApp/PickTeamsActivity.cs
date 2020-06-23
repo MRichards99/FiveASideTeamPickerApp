@@ -111,6 +111,7 @@ namespace FiveASideTeamPickerApp
                     else
                     {
                         StartActivity(typeof(DisplayTeamsActivity));
+                        Finish();
                     }
                 }
                 else
