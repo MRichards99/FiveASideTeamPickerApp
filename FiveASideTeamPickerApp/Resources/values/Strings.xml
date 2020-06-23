@@ -29,7 +29,7 @@
     <string name="display_teams_overall_team_price_textview">Overtall Team Price: </string>
   
     <!--Delete Fantasy Team Menu-->
-    <string name="delete_fantasy_team_prompt_textview">Since two fantasy teams already exist, please select one to be removed</string>
+    <string name="delete_fantasy_team_prompt_textview">Since two fantasy teams already exist, please select one to be removed:</string>
   
     <!--Admin Interface-->
     <string name="app_reset_button_text">App Reset</string>

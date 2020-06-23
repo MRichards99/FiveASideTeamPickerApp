@@ -11,5 +11,15 @@
 		android:minWidth="25px"
 		android:minHeight="25px"
 		android:id="@+id/deleteFantasyTeamPrompt" />
+	<Button
+		android:text="Button"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:id="@+id/deleteFantasyTeam1Button" />
+	<Button
+		android:text="Button"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:id="@+id/deleteFantasyTeam2Button" />
 
 </LinearLayout>
