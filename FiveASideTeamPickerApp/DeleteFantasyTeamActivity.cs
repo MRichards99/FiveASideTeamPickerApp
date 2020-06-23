@@ -46,6 +46,7 @@ namespace FiveASideTeamPickerApp
             deleteFantasyTeam2Button.Click += (sender, args) =>
             {
                 DeleteSelectedFantasyTeam(allFantasyTeams[1]);
+                // Finishing activity call not going into `DeleteSelectedFantasyTeam()` because a method should have a single purpose
                 Finish();
             };
         }

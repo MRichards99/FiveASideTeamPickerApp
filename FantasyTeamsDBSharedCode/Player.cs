@@ -30,6 +30,15 @@ namespace FantasyTeamsDBSharedCode
             // TODO - Implement constructors on all these classes
         }
 
+        public Player(string firstName, string surname, int premierTeamID, int fantasyTeamID, int positionID, double price)
+        {
+            this.Firstname = firstName;
+            this.Surname = surname;
+            this.FantasyTeamID = fantasyTeamID;
+            this.PositionID = positionID;
+            this.Price = price;
+        }
+
         [PrimaryKey, AutoIncrement]
         public int PlayerID { get; set; }
         public string Firstname

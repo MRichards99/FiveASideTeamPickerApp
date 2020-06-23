@@ -4276,7 +4276,7 @@ namespace FiveASideTeamPickerApp
 			public const int playerDetailsFirstNameTextView = 2131296400;
 			
 			// aapt resource value: 0x7f090095
-			public const int playerDetailsPositionEditText = 2131296405;
+			public const int playerDetailsPositionSpinner = 2131296405;
 			
 			// aapt resource value: 0x7f090094
 			public const int playerDetailsPositionTextView = 2131296404;

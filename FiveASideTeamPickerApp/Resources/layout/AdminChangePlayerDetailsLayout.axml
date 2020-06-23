@@ -32,10 +32,12 @@
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
 		android:id="@+id/playerDetailsPositionTextView" />
-	<EditText
+	<Spinner
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
-		android:id="@+id/playerDetailsPositionEditText" />
+		android:minWidth="25px"
+		android:minHeight="25px"
+		android:id="@+id/playerDetailsPositionSpinner" />
 	<TextView
 		android:text="@string/player_details_price_textview"
 		android:textAppearance="?android:attr/textAppearanceMedium"

@@ -62,7 +62,6 @@
     <Compile Include="AdminPremierTeamListActivity.cs" />
     <Compile Include="AppUtility.cs" />
     <Compile Include="DeleteFantasyTeamActivity.cs" />
-    <Compile Include="DisplayTeamFragment.cs" />
     <Compile Include="DisplayTeamsActivity.cs" />
     <Compile Include="InstructionsActivity.cs" />
     <Compile Include="MainActivity.cs" />

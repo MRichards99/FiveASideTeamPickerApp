@@ -39,11 +39,22 @@ namespace FiveASideTeamPickerApp
             // Get view's resources
             EditText playerFirstName = FindViewById<EditText>(Resource.Id.playerDetailsFirstNameEditText);
             EditText playerSurname = FindViewById<EditText>(Resource.Id.playerDetailsSurnameEditText);
-            EditText playerPosition = FindViewById<EditText>(Resource.Id.playerDetailsPositionEditText);
+            Spinner playerPosition = FindViewById<Spinner>(Resource.Id.playerDetailsPositionSpinner);
             EditText playerPrice = FindViewById<EditText>(Resource.Id.playerDetailsPriceEditText);
             Button saveButton = FindViewById<Button>(Resource.Id.playerDetailsSaveButton);
             Button cancelButton = FindViewById<Button>(Resource.Id.playerDetailsCancelButton);
             Button deleteButton = FindViewById<Button>(Resource.Id.playerDetailsDeleteButton);
+
+            // Get selectable positions for spinner and populate the spinner with the position names
+            List<Position> positions = positionRepository.GetAllPositions();
+            List<string> positionNamesArray = new List<string>();
+            foreach (Position position in positions)
+            {
+                positionNamesArray.Add(position.PositionName);
+            }
+            ArrayAdapter<string> positionSpinnerAdapter = new ArrayAdapter<string>(this, Android.Resource.Layout.SimpleSpinnerItem, positionNamesArray);
+            positionSpinnerAdapter.SetDropDownViewResource(Android.Resource.Layout.SimpleSpinnerDropDownItem);
+            playerPosition.Adapter = positionSpinnerAdapter;
 
             string pageType = this.Intent.GetStringExtra("type");
             if (pageType == "existing")
@@ -58,7 +69,9 @@ namespace FiveASideTeamPickerApp
                 playerPrice.Text = player.Price.ToString();
                 // Get position name from database
                 string selectedPlayerPosition = positionRepository.GetPositionNameByID(player.PositionID);
-                playerPosition.Text = selectedPlayerPosition;
+
+                playerPosition.SetSelection(positionSpinnerAdapter.GetPosition(selectedPlayerPosition));
+                //Console.WriteLine($"Selected position: {playerPosition.SelectedItem.ToString()}");
             }
             // If type is not existing, assume its "new" as the app won't have player details to assign to the text fields
             else

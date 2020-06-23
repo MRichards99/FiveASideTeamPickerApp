@@ -18,5 +18,7 @@ namespace FantasyTeamsDBSharedCode
         Position GetPositionByID(int positionID);
 
         string GetPositionNameByID(int positionID);
+
+        List<Position> GetAllPositions();
     }
 }

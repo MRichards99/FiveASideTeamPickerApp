@@ -22,6 +22,11 @@ namespace FantasyTeamsDBSharedCode.SQLite_Implementation
             dbConnection = SQLiteConnector.Connection;
         }
 
+        public List<Position> GetAllPositions()
+        {
+            return dbConnection.Table<Position>().ToList<Position>();
+        }
+
         public Position GetPlayerPosition(Player player)
         {
             throw new NotImplementedException();
