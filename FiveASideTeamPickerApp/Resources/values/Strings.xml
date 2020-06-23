@@ -5,6 +5,10 @@
     <string name="save_button_text">Save</string>
     <string name="cancel_button_text">Cancel</string>
     <string name="delete_button_text">Delete Selected</string>
+  
+    <!--Instructions Menu-->
+    <string name="instructions">This is an app to select 5 a side football teams from a selection of players and premier teams. To use the app, please follow these steps: \n\nAt first, two teams must be registered, inputting the names of the team\'s managers as well as a team name for each.\n\nOnce two teams are registered, the players for these can be picked. Inside that page, it shows who\'s turn it is. During each turn, select which player you\'d like on your team and go to the next turn. Once both teams have selected their players, the selections will be available to see on screen.\n\nThere\'s also the admin interface, used for editing details about players and their associated premier teams. The app can also be reset from this interface; resetting the app will remove all registered fantasy teams and make all players selectable (so they are no longer assigned to a fantasy team).\n\nYou can find the buttons for the aforementioned app features at the main menu.</string>
+    <string name="return_to_main_menu_button_text">Return To Main Menu</string>
 
     <!--Main Menu-->
     <string name="instructions_button_text">Instructions</string>

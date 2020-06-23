@@ -18,8 +18,14 @@ namespace FiveASideTeamPickerApp
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
+            SetContentView(Resource.Layout.InstructionsLayout);
 
-            // Create your application here
+            Button returnToMainMenuButton = FindViewById<Button>(Resource.Id.instructionsReturnToMainMenuButton);
+
+            returnToMainMenuButton.Click += (sender, args) =>
+            {
+                Finish();
+            };
         }
     }
 }
