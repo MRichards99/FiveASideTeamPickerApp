@@ -22,6 +22,7 @@ namespace FantasyTeamsDBSharedCode
         List<Player> GetAllDefenders();
         List<Player> GetAllPlayers();
         List<Player> GetAllPlayersAssignedToFantasyTeams();
+        List<Player> GetAllPlayersOfAFantasyTeam(int fantasyTeamID);
 
         List<Player> GetSelectablePlayersForFantasyTeam(Position position, int fantasyTeamID);
         int GetNumberOfPlayersAssignedToFantasyTeamInPremierTeam(int premierTeamID, int fantasyTeamID);

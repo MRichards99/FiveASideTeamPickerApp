@@ -125,7 +125,6 @@ namespace FiveASideTeamPickerApp
 
         public void AppendToPlayerList(PositionPlayerDelegate databaseQuery, Position position, int fantasyTeamID)
         {
-            // TODO - Can we do away with RebuildPlayerList?
             List<Player> queryResult = databaseQuery(position, fantasyTeamID).OrderBy(s => s.Surname).ToList();
 
             foreach (Player player in queryResult)

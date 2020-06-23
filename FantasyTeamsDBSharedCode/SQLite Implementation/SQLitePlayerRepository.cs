@@ -54,6 +54,11 @@ namespace FantasyTeamsDBSharedCode.SQLite_Implementation
             return dbConnection.Table<Player>().Where(p => p.PositionID != position.PositionID).ToList<Player>();
         }
 
+        public List<Player> GetAllPlayersOfAFantasyTeam(int fantasyTeamID)
+        {
+            return dbConnection.Table<Player>().Where(p => p.FantasyTeamID == fantasyTeamID).ToList();
+        }
+
         public int GetNumberOfPlayersAssignedToFantasyTeamInPremierTeam(int premierTeamID, int fantasyTeamID)
         {
             return dbConnection.Table<Player>().Where(p => p.FantasyTeamID == fantasyTeamID && p.PremierTeamID == premierTeamID).Count();

@@ -76,6 +76,12 @@ namespace FiveASideTeamPickerApp
             string currentFantasyTeamName = allFantasyTeams[currentManagerTurnPointer].FantasyTeamName;
             currentManagerTurnTextView.Text = NameTeamTextFormatting.FormatNameAndTeam(currentManagerFirstName, currentManagerSurname, currentFantasyTeamName);
 
+            selectablePlayersList.ItemSelected += (sender, args) =>
+            {
+                selectedPlayer = selectablePlayersAdapter[args.Position];
+
+            };
+
             nextTurnButton.Click += (sender, args) =>
             {
                 // TODO - Deselect item in list view and disable next turn button each time
@@ -85,9 +91,12 @@ namespace FiveASideTeamPickerApp
                 selectablePlayersList.SetSelection(-1);
                 */
 
-                Console.WriteLine("NEW TURN BUTTON CLICKED.");
-
                 // Assign selected player to the fantasy team
+                //int selectedPlayerPosition = selectablePlayersList.SelectedItemPosition;
+
+                
+
+                //GetSelectedPlayer(selectedPlayerPosition, selectablePlayersAdapter);
                 selectedPlayer.FantasyTeamID = allFantasyTeams[currentManagerTurnPointer].FantasyTeamID;
                 playerRepository.UpdatePlayer(selectedPlayer);
 
@@ -101,8 +110,7 @@ namespace FiveASideTeamPickerApp
                     }
                     else
                     {
-                        // TODO - Implement displaying teams
-                        Console.WriteLine("END OF PICK TEAMS");
+                        StartActivity(typeof(DisplayTeamsActivity));
                     }
                 }
                 else
