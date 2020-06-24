@@ -1,0 +1,33 @@
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="vertical"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:minWidth="25px"
+	android:minHeight="25px">
+	<TextView
+		android:text="@string/premier_team_details_premier_team_name_textview"
+		android:textAppearance="?android:attr/textAppearanceMedium"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:id="@+id/premierTeamDetailsPremierTeamNameTextView" />
+	<EditText
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:id="@+id/premierTeamDetailsPremierTeamNameEditText" />
+	<Button
+		android:text="@string/save_button_text"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:id="@+id/premierTeamDetailsSaveButton" />
+	<Button
+		android:text="@string/premier_team_details_delete_button"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:id="@+id/premierTeamDetailsDeleteButton" />
+	<Button
+		android:text="@string/cancel_button_text"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:id="@+id/premierTeamDetailsCancelButton" />
+</LinearLayout>

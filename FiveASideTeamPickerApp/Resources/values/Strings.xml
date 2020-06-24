@@ -47,4 +47,6 @@
     <string name="player_details_delete_button">Delete Player</string>
   
     <!--Admin - Change Premier Team Details-->
+    <string name="premier_team_details_premier_team_name_textview">Premier Team Name:</string>
+    <string name="premier_team_details_delete_button">Delete Premier Team</string>
 </resources>

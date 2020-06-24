@@ -24,7 +24,7 @@ namespace FantasyTeamsDBSharedCode.SQLite_Implementation
 
         public int AddPremierTeam(PremierTeam team)
         {
-            throw new NotImplementedException();
+            return dbConnection.Insert(team);
         }
 
         public int DeleteAllPremierTeams()
@@ -34,7 +34,7 @@ namespace FantasyTeamsDBSharedCode.SQLite_Implementation
 
         public int DeletePremierTeam(PremierTeam team)
         {
-            throw new NotImplementedException();
+            return dbConnection.Delete(team);
         }
 
         public List<PremierTeam> GetAllPremierTeams()
@@ -78,7 +78,7 @@ namespace FantasyTeamsDBSharedCode.SQLite_Implementation
 
         public int UpdatePremierTeam(PremierTeam team)
         {
-            throw new NotImplementedException();
+            return dbConnection.Update(team);
         }
     }
 }

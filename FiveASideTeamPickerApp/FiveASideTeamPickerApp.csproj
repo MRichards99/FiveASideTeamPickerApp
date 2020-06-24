@@ -57,6 +57,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AdminChangePlayerDetailsActivity.cs" />
+    <Compile Include="AdminChangePremierTeamDetailsActivity.cs" />
     <Compile Include="AdminInterfaceActivity.cs" />
     <Compile Include="AdminPlayersActivity.cs" />
     <Compile Include="AdminPremierTeamListActivity.cs" />
@@ -160,6 +161,11 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\DisplayTeamsLayout.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\AdminChangePremierTeamsDetailsLayout.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>

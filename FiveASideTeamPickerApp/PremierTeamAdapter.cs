@@ -15,9 +15,10 @@ namespace FiveASideTeamPickerApp
 {
     class PremierTeamAdapter : BaseAdapter<PremierTeam>
     {
+        public delegate List<PremierTeam> GetAllPremierTeamsDelegate();
+
         private readonly Activity _context;
         private List<PremierTeam> _premierTeams;
-        private readonly int _listViewLayout;
 
         public PremierTeamAdapter(Activity context, IEnumerable<PremierTeam> premierTeams)
         {
@@ -62,6 +63,27 @@ namespace FiveASideTeamPickerApp
             premierTeamNameTextView.Text = premierTeam.PremierTeamName;
 
             return view;
+        }
+
+        public void AddPremierTeam(PremierTeam premierTeam)
+        {
+            _premierTeams.Add(premierTeam);
+            _premierTeams.OrderBy(p => p.PremierTeamName).ToList();
+        }
+
+        public void RemoveAllPremierTeams()
+        {
+            _premierTeams.Clear();
+        }
+
+        public void AppendToPremierTeamList(GetAllPremierTeamsDelegate databaseQuery)
+        {
+            List<PremierTeam> queryResult = databaseQuery().OrderBy(p => p.PremierTeamName).ToList();
+
+            foreach (PremierTeam premierTeam in queryResult)
+            {
+                AddPremierTeam(premierTeam);
+            }
         }
     }
 }

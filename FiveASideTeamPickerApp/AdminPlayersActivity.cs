@@ -19,10 +19,9 @@ namespace FiveASideTeamPickerApp
     public class AdminPlayersActivity : Activity
     {
         SQLitePlayerRepository playerRepository;
+
         List<Player> players;
         PlayerAdapter playerListAdapter;
-        Player selectedPlayer;
-        int selectedPlayerIndex;
 
         public AdminPlayersActivity()
         {
@@ -45,7 +44,6 @@ namespace FiveASideTeamPickerApp
 
                 // Define that a new player needs to be created, so no existing player to send to the following activity
                 addNewPlayerIntent.PutExtra("type", "new");
-
                 StartActivityForResult(addNewPlayerIntent, 1);
             };
 
@@ -76,8 +74,7 @@ namespace FiveASideTeamPickerApp
 
             // Detect which player has been selected by the user to pass to the details activity
             // This data will also be used when updating the list view once player details have been updated
-            selectedPlayer = playerListAdapter[e.Position];
-            selectedPlayerIndex = e.Position;
+            Player selectedPlayer = playerListAdapter[e.Position];
 
             // Convert Player object into JSON ready to be sent to next activity
             string jsonPlayer = JsonConvert.SerializeObject(selectedPlayer);
