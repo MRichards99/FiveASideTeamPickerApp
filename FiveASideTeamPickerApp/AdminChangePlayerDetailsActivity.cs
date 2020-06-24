@@ -23,8 +23,6 @@ namespace FiveASideTeamPickerApp
         private SQLitePremierTeamRepository premierTeamRepository;
         private Player player;
 
-        string selectedPositionName;
-
         public AdminChangePlayerDetailsActivity()
         {
             // TODO - Change all constructors which create a new repo to use this keyword
