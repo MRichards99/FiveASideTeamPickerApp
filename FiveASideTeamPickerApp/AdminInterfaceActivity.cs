@@ -22,7 +22,6 @@ namespace FiveASideTeamPickerApp
 
         public AdminInterfaceActivity()
         {
-            // TODO - Add comment about creating relevant repos across the different activities
             fantasyTeamRepository = new SQLiteFantasyTeamRepository();
             playerRepository = new SQLitePlayerRepository();
         }
@@ -30,8 +29,6 @@ namespace FiveASideTeamPickerApp
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
-
-            // Setting view from Resources
             SetContentView(Resource.Layout.AdminInterface);
             
             // Get UI resources on this view

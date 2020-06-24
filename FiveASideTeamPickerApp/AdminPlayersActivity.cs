@@ -31,10 +31,11 @@ namespace FiveASideTeamPickerApp
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
-            base.OnCreate(savedInstanceState);
-
             // TODO - Change name of this layout to be 'AdminPlayersList'
+
+            base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.AdminPlayersLayout);
+
             ListView playerList = FindViewById<ListView>(Resource.Id.playersListView);
             Button addPlayerButton = FindViewById<Button>(Resource.Id.addPlayerButton);
 
@@ -57,8 +58,6 @@ namespace FiveASideTeamPickerApp
         protected override void OnActivityResult(int requestCode, [GeneratedEnum] Result resultCode, Intent data)
         {
             base.OnActivityResult(requestCode, resultCode, data);
-
-            // TODO - Look for recommended line length for C# and follow it
 
             // Rebuild data in list view
             playerListAdapter.RemoveAllPlayers();

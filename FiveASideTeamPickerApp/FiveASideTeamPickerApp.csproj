@@ -60,7 +60,6 @@
     <Compile Include="AdminInterfaceActivity.cs" />
     <Compile Include="AdminPlayersActivity.cs" />
     <Compile Include="AdminPremierTeamListActivity.cs" />
-    <Compile Include="AppUtility.cs" />
     <Compile Include="DeleteFantasyTeamActivity.cs" />
     <Compile Include="DisplayTeamsActivity.cs" />
     <Compile Include="InstructionsActivity.cs" />

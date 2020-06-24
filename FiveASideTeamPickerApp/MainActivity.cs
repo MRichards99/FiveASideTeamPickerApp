@@ -22,7 +22,6 @@ namespace FiveASideTeamPickerApp
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
-            // Set our view from the "main" layout resource
             SetContentView(Resource.Layout.activity_main);
 
             // Getting buttons on the main activity
@@ -64,7 +63,6 @@ namespace FiveASideTeamPickerApp
                 }
                 else
                 {
-
                     StartActivity(typeof(PickTeamsActivity));
                 }
             };
@@ -81,7 +79,7 @@ namespace FiveASideTeamPickerApp
             // File name to use when copied
             var dbFile = Path.Combine(docFolder, "FiveASide.sqlite");
             // Don't repeat these steps if the database is already part of the app's data
-            if (!System.IO.File.Exists(dbFile))
+            if (!File.Exists(dbFile))
             {
                 // Get DB file from Resources and stream the data
                 var s = Resources.OpenRawResource(Resource.Raw.FantasyTeams);

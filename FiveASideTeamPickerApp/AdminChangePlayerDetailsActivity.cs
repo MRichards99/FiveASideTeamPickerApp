@@ -36,8 +36,6 @@ namespace FiveASideTeamPickerApp
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.AdminChangePlayerDetailsLayout);
 
-            // TODO - Make premier team be able to be edited, perhaps select from a drop down?
-
             // Get view's resources
             EditText playerFirstName = FindViewById<EditText>(Resource.Id.playerDetailsFirstNameEditText);
             EditText playerSurname = FindViewById<EditText>(Resource.Id.playerDetailsSurnameEditText);
@@ -134,7 +132,6 @@ namespace FiveASideTeamPickerApp
                     playerRepository.InsertNewPlayer(player);
                 }
                 
-                // TODO - Delete intent code
                 SetResult(Result.Ok);
                 Finish();
             };

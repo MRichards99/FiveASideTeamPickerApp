@@ -27,8 +27,6 @@ namespace FiveASideTeamPickerApp
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
-
-            // Setting view from Resources
             SetContentView(Resource.Layout.RegisterTeam);
 
             // Get UI resources on this view
@@ -63,7 +61,7 @@ namespace FiveASideTeamPickerApp
                     // Insert team to DB
                     fantasyTeamRepository.AddFantasyTeam(newTeam);
 
-                    ReturnToMainMenu();
+                    Finish();
                 }
             };
 
@@ -71,21 +69,8 @@ namespace FiveASideTeamPickerApp
             // When cancel button is clicked, return to the main menu
             cancelButton.Click += (sender, args) =>
             {
-                // TODO - Remove method if not needed
-                //ReturnToMainMenu();
-
-                //FinishActivity(this);
-
-                // TODO - Test this method works as intented
-                // Exit the current activity - this will go back to the main menu as that will be at the top of the activity stack
                 Finish();
             };
-        }
-
-        void ReturnToMainMenu()
-        {
-            // TODO - Do I need to exit current activity before starting a new one?
-            StartActivity(typeof(MainActivity));
         }
     }
 }

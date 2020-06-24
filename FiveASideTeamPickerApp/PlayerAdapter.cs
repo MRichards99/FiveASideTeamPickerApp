@@ -11,11 +11,9 @@ using Android.Views;
 using Android.Widget;
 using FantasyTeamsDBSharedCode;
 using FantasyTeamsDBSharedCode.SQLite_Implementation;
-using static FantasyTeamsDBSharedCode.Player;
 
 namespace FiveASideTeamPickerApp
 {
-    // TODO - Should these adapters be in the other project?
     public class PlayerAdapter : BaseAdapter<Player>
     {
         // Defining delegates to be used with this adapter
@@ -78,8 +76,6 @@ namespace FiveASideTeamPickerApp
             TextView playerNameAndTeam = view.FindViewById<TextView>(Android.Resource.Id.Text1);
             TextView playerAdditionalDetails = view.FindViewById<TextView>(Android.Resource.Id.Text2);
 
-            // TODO - decide if I wish to change any other properties of the text fields
-
             // Change formatting of TextView depending on if firstname is empty or not
             // An empty first name means the TextView doesn't need a space to separate first and last names
             string premierTeamName = premierTeamRepository.GetPremierTeamNameFromID(player.PremierTeamID);
@@ -87,20 +83,9 @@ namespace FiveASideTeamPickerApp
 
             // Add position and player's price onto second line of text
             string playerPositionName = positionRepository.GetPositionNameByID(player.PositionID);
-            // TODO - Change all of these to formatted strings
             playerAdditionalDetails.Text = playerPositionName + ", £" + player.Price + " million";
              
             return view;
-        }
-
-        // TODO - Check if each of these methods are implemented, delete the ones which aren't
-        public void UpdatePlayer(int index, Player player)
-        {
-            // Cannot add a setter to `this[int index]` as this would invalid the method from BaseAdapter
-            _players[index] = player;
-
-            // Automatically refresh the data view
-            this.NotifyDataSetChanged();
         }
 
         public void AddPlayer(Player player)

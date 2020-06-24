@@ -9,7 +9,6 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
-using Java.Util;
 using Random = System.Random;
 using FantasyTeamsDBSharedCode;
 using FantasyTeamsDBSharedCode.SQLite_Implementation;
@@ -26,7 +25,6 @@ namespace FiveASideTeamPickerApp
         ListView selectablePlayersList;
 
         Player selectedPlayer;
-
         int currentManagerTurnPointer;
         int turnCounter;
         List<Position> currentSelectablePositions;
@@ -156,15 +154,13 @@ namespace FiveASideTeamPickerApp
 
             Random random = new Random();
             return random.Next(0, 2);
-
         }
 
-        // TODO - Test that selectablePlayers isn't required to mess about with the data
         void AssembleNewStage(Stage stage, PlayerAdapter playerAdapter, List<FantasyTeam> fantasyTeams)
         {
             // Reset turn counter and correct manager having the starting turn
             turnCounter = 0;
-            // TODO - Comment my thoughts behind XOR of 0 and 1
+            // Perform a bitwise shift to flip the pointer between 0 and 1
             currentManagerTurnPointer ^= stageManagerXOR;
 
             UpdateListOfPlayers(stage.SelectablePositions, playerAdapter, fantasyTeams[currentManagerTurnPointer].FantasyTeamID);            
@@ -173,8 +169,6 @@ namespace FiveASideTeamPickerApp
         void ArrangeNewTurn(PlayerAdapter playerAdapter, List<FantasyTeam> fantasyTeams)
         {
             turnCounter += 1;
-            
-
             UpdateListOfPlayers(currentSelectablePositions, playerAdapter, fantasyTeams[currentManagerTurnPointer].FantasyTeamID);
         }
 
@@ -191,9 +185,8 @@ namespace FiveASideTeamPickerApp
 
         void StageManagementWrapper(List<Stage> stages, PlayerAdapter playerAdapter, List<FantasyTeam> fantasyTeams)
         {
-            /*
-            Wrapper method over the method calls that are used when preparing for a new stage
-            */
+            /* Wrapper method over the method calls that are used when preparing for a new stage
+             */
 
             stageManagerXOR = stages[0].StartingManager;
             // stages[0] will always contain the next stage

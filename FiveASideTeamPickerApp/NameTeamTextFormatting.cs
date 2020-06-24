@@ -16,8 +16,6 @@ namespace FiveASideTeamPickerApp
     {
         public static string FormatNameAndTeam(string firstName, string surname, string teamName)
         {
-            //Console.WriteLine($"Firstname: {firstName}, Surname: {surname}, Team Name: {teamName}");
-
             string formattedText = "";
 
             if (string.IsNullOrEmpty(firstName))
@@ -31,10 +29,7 @@ namespace FiveASideTeamPickerApp
             }
             formattedText += ", " + teamName;
 
-            //Console.WriteLine(formattedText);
-
             return formattedText;
         }
-
     }
 }

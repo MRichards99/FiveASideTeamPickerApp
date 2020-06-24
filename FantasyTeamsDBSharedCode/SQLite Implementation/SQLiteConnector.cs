@@ -16,8 +16,10 @@ namespace FantasyTeamsDBSharedCode.SQLite_Implementation
 {
     public class SQLiteConnector
     {
-        // Static property so it can be retrieved without having to create an instance of SQLiteConnector
-        // Ideal for a container type class such as this
+        /* Static property so it can be retrieved without having to create an instance of SQLiteConnector,
+         * Ideal for a container type class such as this
+         */
+
         public static SQLiteConnection Connection
         {
             get
@@ -31,9 +33,7 @@ namespace FantasyTeamsDBSharedCode.SQLite_Implementation
             get
             {
                 string fileLocation = "FiveASide.sqlite";
-                var path = Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal), fileLocation);
-
-                return path;
+                return Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal), fileLocation);
             }
         }
     }
