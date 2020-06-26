@@ -26,6 +26,7 @@ namespace FantasyTeamsDBSharedCode
 
         List<Player> GetSelectablePlayersForFantasyTeam(Position position, int fantasyTeamID);
         int GetNumberOfPlayersAssignedToFantasyTeamInPremierTeam(int premierTeamID, int fantasyTeamID);
+        int ResetFantasyTeamSelection();
 
         int InsertNewPlayer(Player player);
         int UpdatePlayer(Player player);

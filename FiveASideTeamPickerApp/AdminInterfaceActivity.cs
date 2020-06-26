@@ -63,12 +63,7 @@ namespace FiveASideTeamPickerApp
             }
             */
 
-            List<Player> fantasyTeamPlayers = playerRepository.GetAllPlayersAssignedToFantasyTeams();
-            foreach (Player player in fantasyTeamPlayers)
-            {
-                player.FantasyTeamID = 0;
-                playerRepository.UpdatePlayer(player);
-            }
+            playerRepository.ResetFantasyTeamSelection();
 
             // Alert user that app reset has taken place
             // TODO - Transfer all toast messages into strings.xml

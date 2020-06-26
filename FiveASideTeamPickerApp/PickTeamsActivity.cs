@@ -66,6 +66,9 @@ namespace FiveASideTeamPickerApp
             // Get fantasy teams
             List<FantasyTeam> allFantasyTeams = fantasyTeamRepository.GetAllFantasyTeams();
 
+            // Resetting any previous team selections
+            playerRepository.ResetFantasyTeamSelection();
+
             StageManagementWrapper(stages, selectablePlayersAdapter, allFantasyTeams);
             ArrangeNewTurn(selectablePlayersAdapter, allFantasyTeams);
 

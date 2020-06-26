@@ -85,6 +85,19 @@ namespace FantasyTeamsDBSharedCode.SQLite_Implementation
             return dbConnection.Insert(player);
         }
 
+        public int ResetFantasyTeamSelection()
+        {
+            int rowsUpdated = 0;
+            List<Player> fantasyTeamPlayers = GetAllPlayersAssignedToFantasyTeams();
+            foreach (Player player in fantasyTeamPlayers)
+            {
+                player.FantasyTeamID = 0;
+                rowsUpdated += UpdatePlayer(player);
+            }
+
+            return rowsUpdated;
+        }
+
         public int UpdatePlayer(Player player)
         {
             return dbConnection.Update(player);
