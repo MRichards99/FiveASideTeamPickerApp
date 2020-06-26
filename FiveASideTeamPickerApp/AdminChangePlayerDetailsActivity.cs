@@ -1,17 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using Newtonsoft.Json;
 
 using Android.App;
-using Android.Content;
 using Android.OS;
-using Android.Runtime;
-using Android.Views;
 using Android.Widget;
+
 using FantasyTeamsDBSharedCode;
 using FantasyTeamsDBSharedCode.SQLite_Implementation;
-using Newtonsoft.Json;
+
 
 namespace FiveASideTeamPickerApp
 {
@@ -25,7 +22,6 @@ namespace FiveASideTeamPickerApp
 
         public AdminChangePlayerDetailsActivity()
         {
-            // TODO - Change all constructors which create a new repo to use this keyword
             positionRepository = new SQLitePositionRepository();
             playerRepository = new SQLitePlayerRepository();
             premierTeamRepository = new SQLitePremierTeamRepository();
@@ -68,7 +64,6 @@ namespace FiveASideTeamPickerApp
             premierTeamSpinnerAdapter.SetDropDownViewResource(Android.Resource.Layout.SimpleSpinnerDropDownItem);
             playerPremierTeam.Adapter = premierTeamSpinnerAdapter;
 
-
             string pageType = this.Intent.GetStringExtra("type");
             if (pageType == "existing")
             {
@@ -106,24 +101,6 @@ namespace FiveASideTeamPickerApp
 
                 if (pageType == "existing")
                 {
-                    // TODO - Fix trying to compare the two objects before going off to DB, or remove it
-
-                    /*
-                    // Check if the user has updated any aspects of the player to avoid unneeded DB traffic
-                  
-                    string originalPlayer = this.Intent.GetStringExtra("selectedPlayer");
-                    string editedPlayer = JsonConvert.SerializeObject(player);
-
-                    if (originalPlayer == editedPlayer)
-                    {
-                        Console.WriteLine("THEYRE THE SAME");
-                    }
-                    else
-                    {
-                        Console.WriteLine("DIFFERENT");
-                    }
-                    */
-
                     playerRepository.UpdatePlayer(player);
                 }
                 else if (pageType == "new")

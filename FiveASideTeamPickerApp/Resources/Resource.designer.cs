@@ -4985,6 +4985,9 @@ namespace FiveASideTeamPickerApp
 			// aapt resource value: 0x7f0a003c
 			public const int admin_premier_teams_button_text = 2131361852;
 			
+			// aapt resource value: 0x7f0a003f
+			public const int admin_reset_app_toast_message = 2131361855;
+			
 			// aapt resource value: 0x7f0a0028
 			public const int app_name = 2131361832;
 			
@@ -5051,29 +5054,29 @@ namespace FiveASideTeamPickerApp
 			// aapt resource value: 0x7f0a0031
 			public const int pick_teams_button_text = 2131361841;
 			
-			// aapt resource value: 0x7f0a0044
-			public const int player_details_delete_button = 2131361860;
-			
-			// aapt resource value: 0x7f0a003f
-			public const int player_details_first_name_textview = 2131361855;
-			
-			// aapt resource value: 0x7f0a0041
-			public const int player_details_position_textview = 2131361857;
-			
-			// aapt resource value: 0x7f0a0042
-			public const int player_details_premier_team_textview = 2131361858;
-			
-			// aapt resource value: 0x7f0a0043
-			public const int player_details_price_textview = 2131361859;
+			// aapt resource value: 0x7f0a0045
+			public const int player_details_delete_button = 2131361861;
 			
 			// aapt resource value: 0x7f0a0040
-			public const int player_details_surname_textview = 2131361856;
+			public const int player_details_first_name_textview = 2131361856;
+			
+			// aapt resource value: 0x7f0a0042
+			public const int player_details_position_textview = 2131361858;
+			
+			// aapt resource value: 0x7f0a0043
+			public const int player_details_premier_team_textview = 2131361859;
+			
+			// aapt resource value: 0x7f0a0044
+			public const int player_details_price_textview = 2131361860;
+			
+			// aapt resource value: 0x7f0a0041
+			public const int player_details_surname_textview = 2131361857;
+			
+			// aapt resource value: 0x7f0a0047
+			public const int premier_team_details_delete_button = 2131361863;
 			
 			// aapt resource value: 0x7f0a0046
-			public const int premier_team_details_delete_button = 2131361862;
-			
-			// aapt resource value: 0x7f0a0045
-			public const int premier_team_details_premier_team_name_textview = 2131361861;
+			public const int premier_team_details_premier_team_name_textview = 2131361862;
 			
 			// aapt resource value: 0x7f0a0030
 			public const int register_teams_button_text = 2131361840;

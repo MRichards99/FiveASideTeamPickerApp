@@ -1,27 +1,25 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using Newtonsoft.Json;
 
 using Android.App;
 using Android.Content;
 using Android.OS;
 using Android.Runtime;
-using Android.Views;
 using Android.Widget;
+
 using FantasyTeamsDBSharedCode;
 using FantasyTeamsDBSharedCode.SQLite_Implementation;
-using Newtonsoft.Json;
-
 
 namespace FiveASideTeamPickerApp
 {
     [Activity(Label = "AdminPremierTeamListActivity")]
     public class AdminPremierTeamListActivity : Activity
     {
-        SQLitePremierTeamRepository premierTeamRepository;
-        List<PremierTeam> premierTeams;
-        PremierTeamAdapter premierTeamAdapter;
+        private SQLitePremierTeamRepository premierTeamRepository;
+
+        private List<PremierTeam> premierTeams;
+        private PremierTeamAdapter premierTeamAdapter;
 
         public AdminPremierTeamListActivity()
         {
@@ -66,14 +64,11 @@ namespace FiveASideTeamPickerApp
 
             PremierTeam selectedPremierTeam = premierTeamAdapter[e.Position];
 
-            Console.WriteLine($"Selected Premier Team name: {selectedPremierTeam}");
-
             string jsonPremierTeam = JsonConvert.SerializeObject(selectedPremierTeam);
             changePremierTeamDetailsIntent.PutExtra("selectedPremierTeam", jsonPremierTeam);
 
             StartActivityForResult(changePremierTeamDetailsIntent, 1);
 
         }
-
     }
 }

@@ -1,5 +1,6 @@
-﻿using SQLite;
-using System;
+﻿using System;
+
+using SQLite;
 
 namespace FantasyTeamsDBSharedCode
 {
@@ -7,7 +8,6 @@ namespace FantasyTeamsDBSharedCode
     [Table("FantasyTeams")]
     public class FantasyTeam
     {
-        //private int fantasyTeamID;
         private string fantasyTeamName;
         private string managerFirstname;
         private string managerSurname;
@@ -24,7 +24,6 @@ namespace FantasyTeamsDBSharedCode
             ManagerSurname = surname;
         }
 
-        // TODO - Once I've got fantasy teams working in the DB, test if I can remove the setter on the ID
         [PrimaryKey, AutoIncrement]
         public int FantasyTeamID { get; set; }
 

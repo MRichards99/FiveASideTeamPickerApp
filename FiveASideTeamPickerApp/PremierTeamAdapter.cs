@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 using Android.App;
-using Android.Content;
-using Android.OS;
-using Android.Runtime;
 using Android.Views;
 using Android.Widget;
+
 using FantasyTeamsDBSharedCode;
 
 namespace FiveASideTeamPickerApp
@@ -58,7 +54,6 @@ namespace FiveASideTeamPickerApp
             }
 
             PremierTeam premierTeam = _premierTeams[index];
-            // TODO - Check this doesn't mess up a text 1 in admin player bit or when picking a team
             TextView premierTeamNameTextView = view.FindViewById<TextView>(Android.Resource.Id.Text1);
             premierTeamNameTextView.Text = premierTeam.PremierTeamName;
 

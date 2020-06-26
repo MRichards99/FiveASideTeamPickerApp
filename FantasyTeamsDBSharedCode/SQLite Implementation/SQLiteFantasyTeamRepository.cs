@@ -1,14 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
-using Android.App;
-using Android.Content;
-using Android.OS;
-using Android.Runtime;
-using Android.Views;
-using Android.Widget;
 using SQLite;
 
 namespace FantasyTeamsDBSharedCode.SQLite_Implementation
@@ -24,18 +17,12 @@ namespace FantasyTeamsDBSharedCode.SQLite_Implementation
 
         public int AddFantasyTeam(FantasyTeam team)
         {
-            int rowsAdded = dbConnection.Insert(team);
-            return rowsAdded;
+            return dbConnection.Insert(team);
         }
 
         public List<FantasyTeam> GetAllFantasyTeams()
         {
             return dbConnection.Table<FantasyTeam>().ToList<FantasyTeam>();
-        }
-
-        public FantasyTeam GetFantasyTeamByID(int teamID)
-        {
-            throw new NotImplementedException();
         }
 
         public int GetNumberOfFantasyTeams()

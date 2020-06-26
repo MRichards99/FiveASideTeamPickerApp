@@ -1,14 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 
-using Android.App;
-using Android.Content;
-using Android.OS;
-using Android.Runtime;
-using Android.Views;
-using Android.Widget;
 using FantasyTeamsDBSharedCode;
 
 namespace FiveASideTeamPickerApp
@@ -25,11 +16,10 @@ namespace FiveASideTeamPickerApp
          * The list of stages are constructed in Stages.cs, with that list implemented in PickTeamsActivty.cs
          */
 
-        public Stage(List<Position> positions, int startingManager, string description)
+        public Stage(List<Position> positions, int startingManager)
         {
             this.SelectablePositions = positions;
             this.StartingManager = startingManager;
-            this.Description = description;
         }
 
         public List<Position> SelectablePositions
@@ -39,12 +29,6 @@ namespace FiveASideTeamPickerApp
         }
 
         public int StartingManager
-        {
-            get;
-            set;
-        }
-
-        public string Description
         {
             get;
             set;

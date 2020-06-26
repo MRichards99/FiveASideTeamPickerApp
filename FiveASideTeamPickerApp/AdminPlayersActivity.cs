@@ -1,27 +1,24 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
+using Newtonsoft.Json;
 
 using Android.App;
 using Android.Content;
 using Android.OS;
 using Android.Runtime;
-using Android.Views;
 using Android.Widget;
+
 using FantasyTeamsDBSharedCode;
 using FantasyTeamsDBSharedCode.SQLite_Implementation;
-using Newtonsoft.Json;
 
 namespace FiveASideTeamPickerApp
 {
     [Activity(Label = "AdminPlayersActivity")]
     public class AdminPlayersActivity : Activity
     {
-        SQLitePlayerRepository playerRepository;
+        private SQLitePlayerRepository playerRepository;
 
-        List<Player> players;
-        PlayerAdapter playerListAdapter;
+        private List<Player> players;
+        private PlayerAdapter playerListAdapter;
 
         public AdminPlayersActivity()
         {
@@ -30,8 +27,6 @@ namespace FiveASideTeamPickerApp
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
-            // TODO - Change name of this layout to be 'AdminPlayersList'
-
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.AdminPlayersLayout);
 

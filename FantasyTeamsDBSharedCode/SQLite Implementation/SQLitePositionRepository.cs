@@ -1,14 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
-using Android.App;
-using Android.Content;
-using Android.OS;
-using Android.Runtime;
-using Android.Views;
-using Android.Widget;
 using SQLite;
 
 namespace FantasyTeamsDBSharedCode.SQLite_Implementation
@@ -25,11 +18,6 @@ namespace FantasyTeamsDBSharedCode.SQLite_Implementation
         public List<Position> GetAllPositions()
         {
             return dbConnection.Table<Position>().ToList<Position>();
-        }
-
-        public Position GetPlayerPosition(Player player)
-        {
-            throw new NotImplementedException();
         }
 
         public Position GetPositionByID(int positionID)

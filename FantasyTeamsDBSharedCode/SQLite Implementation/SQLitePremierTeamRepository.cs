@@ -1,14 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
-using Android.App;
-using Android.Content;
-using Android.OS;
-using Android.Runtime;
-using Android.Views;
-using Android.Widget;
 using SQLite;
 
 namespace FantasyTeamsDBSharedCode.SQLite_Implementation
@@ -25,11 +18,6 @@ namespace FantasyTeamsDBSharedCode.SQLite_Implementation
         public int AddPremierTeam(PremierTeam team)
         {
             return dbConnection.Insert(team);
-        }
-
-        public int DeleteAllPremierTeams()
-        {
-            throw new NotImplementedException();
         }
 
         public int DeletePremierTeam(PremierTeam team)
@@ -49,11 +37,9 @@ namespace FantasyTeamsDBSharedCode.SQLite_Implementation
             List<PremierTeam> allPremierTeams = GetAllPremierTeams();
             foreach (PremierTeam premierTeam in allPremierTeams)
             {
-                // TODO - Do a find on all Console statements and remove them
                 SQLitePlayerRepository playerRepository = new SQLitePlayerRepository();
                 int premierTeamPlayerAssignedCount = playerRepository.GetNumberOfPlayersAssignedToFantasyTeamInPremierTeam(premierTeam.PremierTeamID, fantasyTeamID);
 
-                Console.WriteLine($"Fantasy Team ID: {fantasyTeamID}, Number of players in {premierTeam.PremierTeamName}: {premierTeamPlayerAssignedCount}");
                 if (premierTeamPlayerAssignedCount < 2)
                 {
                     eligiblePremierTeamIDs.Add(premierTeam.PremierTeamID);
@@ -63,6 +49,11 @@ namespace FantasyTeamsDBSharedCode.SQLite_Implementation
             return eligiblePremierTeamIDs;
         }
 
+        public PremierTeam GetPremierTeamFromID(int premierTeamID)
+        {
+            return dbConnection.Table<PremierTeam>().SingleOrDefault(c => c.PremierTeamID == premierTeamID);
+        }
+
         public int GetPremierTeamIDFromName(string premierTeamName)
         {
             return dbConnection.Table<PremierTeam>().SingleOrDefault(p => p.PremierTeamName == premierTeamName).PremierTeamID;
@@ -70,9 +61,7 @@ namespace FantasyTeamsDBSharedCode.SQLite_Implementation
 
         public string GetPremierTeamNameFromID(int premierTeamID)
         {
-            // TODO - Refactor so premier team is grabbed from GetPremierTeam()
-            // TODO - Check if all the methods which don't return lists use the singleordefault bit
-            PremierTeam premierTeamFromDB = dbConnection.Table<PremierTeam>().SingleOrDefault(c => c.PremierTeamID == premierTeamID);
+            PremierTeam premierTeamFromDB = GetPremierTeamFromID(premierTeamID);
             return premierTeamFromDB.PremierTeamName;
         }
 

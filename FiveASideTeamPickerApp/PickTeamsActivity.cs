@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
+using Random = System.Random;
 
 using Android.App;
-using Android.Content;
 using Android.OS;
-using Android.Runtime;
-using Android.Views;
 using Android.Widget;
-using Random = System.Random;
+
 using FantasyTeamsDBSharedCode;
 using FantasyTeamsDBSharedCode.SQLite_Implementation;
 
@@ -18,17 +13,17 @@ namespace FiveASideTeamPickerApp
     [Activity(Label = "PickTeamsActivity")]
     public class PickTeamsActivity : Activity
     {
-        SQLiteFantasyTeamRepository fantasyTeamRepository;
-        SQLitePlayerRepository playerRepository;
+        private SQLiteFantasyTeamRepository fantasyTeamRepository;
+        private SQLitePlayerRepository playerRepository;
 
-        TextView currentManagerTurnTextView;
-        ListView selectablePlayersList;
+        private TextView currentManagerTurnTextView;
+        private ListView selectablePlayersList;
 
-        Player selectedPlayer;
-        int currentManagerTurnPointer;
-        int turnCounter;
-        List<Position> currentSelectablePositions;
-        int stageManagerXOR;
+        private Player selectedPlayer;
+        private int currentManagerTurnPointer;
+        private int turnCounter;
+        private List<Position> currentSelectablePositions;
+        private int stageManagerXOR;
 
         public PickTeamsActivity()
         {
@@ -39,7 +34,6 @@ namespace FiveASideTeamPickerApp
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
-            // TODO - Check this are formatted like this in all files
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.PickTeams);
 
@@ -95,9 +89,6 @@ namespace FiveASideTeamPickerApp
                 // Assign selected player to the fantasy team
                 //int selectedPlayerPosition = selectablePlayersList.SelectedItemPosition;
 
-                
-
-                //GetSelectedPlayer(selectedPlayerPosition, selectablePlayersAdapter);
                 selectedPlayer.FantasyTeamID = allFantasyTeams[currentManagerTurnPointer].FantasyTeamID;
                 playerRepository.UpdatePlayer(selectedPlayer);
 
@@ -121,7 +112,6 @@ namespace FiveASideTeamPickerApp
 
                     // Go to next turn
                     ArrangeNewTurn(selectablePlayersAdapter, allFantasyTeams);
-                    
                 }
 
                 currentManagerFirstName = allFantasyTeams[currentManagerTurnPointer].ManagerFirstname;
@@ -132,7 +122,6 @@ namespace FiveASideTeamPickerApp
                 // Data will have changed so list view needs refreshing - player selected or new stage, one or both
                 selectablePlayersAdapter.NotifyDataSetChanged();
             };
-
 
             selectablePlayersList.ItemClick += (sender, args) =>
             {
@@ -150,10 +139,10 @@ namespace FiveASideTeamPickerApp
         int SelectStartingManager()
         {
             /*
-            By randomly selecting an integer between 0 and 1 inclusive, the result can be used as
-            an index to grab the correct manager from a list of fantasy teams, of which there'll
-            only ever be two (this activity cannot be started unless there are two teams)
-            */
+             * By randomly selecting an integer between 0 and 1 inclusive, the result can be used as
+             * an index to grab the correct manager from a list of fantasy teams, of which there'll
+             * only ever be two (this activity cannot be started unless there are two teams)
+             */
 
             Random random = new Random();
             return random.Next(0, 2);

@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 
 using Android.App;
-using Android.Content;
 using Android.OS;
-using Android.Runtime;
-using Android.Views;
 using Android.Widget;
+
 using FantasyTeamsDBSharedCode;
 using FantasyTeamsDBSharedCode.SQLite_Implementation;
 
@@ -17,7 +12,7 @@ namespace FiveASideTeamPickerApp
     [Activity(Label = "DeleteFantasyTeamActivity")]
     public class DeleteFantasyTeamActivity : Activity
     {
-        SQLiteFantasyTeamRepository fantasyTeamRepository;
+        private SQLiteFantasyTeamRepository fantasyTeamRepository;
 
         public DeleteFantasyTeamActivity()
         {

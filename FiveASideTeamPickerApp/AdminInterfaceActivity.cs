@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 
 using Android.App;
-using Android.Content;
 using Android.OS;
-using Android.Runtime;
-using Android.Views;
 using Android.Widget;
+
 using FantasyTeamsDBSharedCode;
 using FantasyTeamsDBSharedCode.SQLite_Implementation;
 
@@ -17,8 +12,8 @@ namespace FiveASideTeamPickerApp
     [Activity(Label = "AdminInterfaceActivity")]
     public class AdminInterfaceActivity : Activity
     {
-        SQLiteFantasyTeamRepository fantasyTeamRepository;
-        SQLitePlayerRepository playerRepository;
+        private SQLiteFantasyTeamRepository fantasyTeamRepository;
+        private SQLitePlayerRepository playerRepository;
 
         public AdminInterfaceActivity()
         {
@@ -35,7 +30,6 @@ namespace FiveASideTeamPickerApp
             Button resetButton = FindViewById<Button>(Resource.Id.appResetButton);
             Button adminPlayerButton = FindViewById<Button>(Resource.Id.adminPlayerButton);
             Button adminPremierTeamButton = FindViewById<Button>(Resource.Id.adminPremierTeamButton);
-
 
             resetButton.Click += (sender, args) =>
             {
@@ -55,19 +49,15 @@ namespace FiveASideTeamPickerApp
 
         void ResetApp()
         {
-            // TODO - Re-enable this feature
-            /*
             List<FantasyTeam> allFantasyTeams = fantasyTeamRepository.GetAllFantasyTeams();
             foreach (FantasyTeam team in allFantasyTeams) {
                 fantasyTeamRepository.RemoveFantasyTeam(team);
             }
-            */
 
             playerRepository.ResetFantasyTeamSelection();
 
             // Alert user that app reset has taken place
-            // TODO - Transfer all toast messages into strings.xml
-            Toast.MakeText(this, "All fantasy teams have been removed and all players are now selectable", ToastLength.Short).Show();
+            Toast.MakeText(this, Resource.String.admin_reset_app_toast_message, ToastLength.Short).Show();
         }
     }
 }

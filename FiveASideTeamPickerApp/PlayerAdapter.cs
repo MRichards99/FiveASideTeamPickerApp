@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 using Android.App;
-using Android.Content;
-using Android.OS;
-using Android.Runtime;
 using Android.Views;
 using Android.Widget;
+
 using FantasyTeamsDBSharedCode;
 using FantasyTeamsDBSharedCode.SQLite_Implementation;
 
@@ -20,12 +16,10 @@ namespace FiveASideTeamPickerApp
         public delegate List<Player> NoParameterPlayerDelegate();
         public delegate List<Player> PositionPlayerDelegate(Position position, int fantasyTeamID);
 
-        // TODO - Should I change all my private variables to private readonly and start with underscores?
         private readonly Activity _context;
         private List<Player> _players;
         private readonly int _listViewLayout;
 
-        // TODO - Check if these variable should be private or not and make it consistent across the files
         private SQLitePremierTeamRepository premierTeamRepository;
         private SQLitePositionRepository positionRepository;
 
@@ -35,9 +29,8 @@ namespace FiveASideTeamPickerApp
             this._players = players.OrderBy(p => p.Surname).ToList();
             this._listViewLayout = listViewLayout;
 
-            // TODO - Somewhere, one of these isn't in a constructor. It needs to be
-            this.premierTeamRepository = new SQLitePremierTeamRepository();
-            this.positionRepository = new SQLitePositionRepository();
+            premierTeamRepository = new SQLitePremierTeamRepository();
+            positionRepository = new SQLitePositionRepository();
         }
 
         public override Player this[int index]

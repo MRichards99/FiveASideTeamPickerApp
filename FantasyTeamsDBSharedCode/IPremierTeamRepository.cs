@@ -1,27 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-using Android.App;
-using Android.Content;
-using Android.OS;
-using Android.Runtime;
-using Android.Views;
-using Android.Widget;
+﻿using System.Collections.Generic;
 
 namespace FantasyTeamsDBSharedCode
 {
     interface IPremierTeamRepository
     {
-        int DeleteAllPremierTeams();
-        int DeletePremierTeam(PremierTeam team);
-        int AddPremierTeam(PremierTeam team);
-        int UpdatePremierTeam(PremierTeam team);
-
+        PremierTeam GetPremierTeamFromID(int premierTeamID);
         string GetPremierTeamNameFromID(int premierTeamID);
         List<int> GetEligiblePremierTeams(int fantasyTeamID);
         List<PremierTeam> GetAllPremierTeams();
         int GetPremierTeamIDFromName(string premierTeamName);
+
+        int DeletePremierTeam(PremierTeam team);
+        int AddPremierTeam(PremierTeam team);
+        int UpdatePremierTeam(PremierTeam team);
     }
 }
