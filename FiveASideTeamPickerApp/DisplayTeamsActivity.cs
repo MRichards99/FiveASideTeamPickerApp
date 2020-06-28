@@ -30,13 +30,13 @@ namespace FiveASideTeamPickerApp
             TextView displayTeamsTeam1DetailsTextView = FindViewById<TextView>(Resource.Id.displayTeamsTeam1DetailsTextView);
             TextView displayTeamsTeam1TeamPriceText = FindViewById<TextView>(Resource.Id.displayTeamsTeam1TeamPriceText);
             ListView displayTeamsTeam1PlayerListView = FindViewById<ListView>(Resource.Id.displayTeamsTeam1PlayerListView);
+            displayTeamsTeam1PlayerListView.SetMinimumHeight(1000);
 
             TextView displayTeamsTeam2DetailsTextView = FindViewById<TextView>(Resource.Id.displayTeamsTeam2DetailsTextView);
             TextView displayTeamsTeam2TeamPriceText = FindViewById<TextView>(Resource.Id.displayTeamsTeam2TeamPriceText);
             ListView displayTeamsTeam2PlayerListView = FindViewById<ListView>(Resource.Id.displayTeamsTeam2PlayerListView);
 
             Button returnToMainMenuButton = FindViewById<Button>(Resource.Id.displayTeamsReturnToMainMenuButton);
-
             List<FantasyTeam> fantasyTeams = fantasyTeamRepository.GetAllFantasyTeams();
 
             InsertDataIntoUIComponents(fantasyTeams[0], displayTeamsTeam1DetailsTextView, displayTeamsTeam1TeamPriceText, displayTeamsTeam1PlayerListView);

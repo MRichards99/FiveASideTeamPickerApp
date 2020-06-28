@@ -26,7 +26,7 @@
     <string name="next_turn_button_text">Next Turn</string>
   
     <!--Display Teams Page-->
-    <string name="display_teams_overall_team_price_textview">Overtall Team Price: </string>
+    <string name="display_teams_overall_team_price_textview">Overall Team Price: </string>
   
     <!--Delete Fantasy Team Menu-->
     <string name="delete_fantasy_team_prompt_textview">Since two fantasy teams already exist, please select one to be removed:</string>
