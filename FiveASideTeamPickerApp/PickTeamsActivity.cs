@@ -79,18 +79,15 @@ namespace FiveASideTeamPickerApp
 
             nextTurnButton.Click += (sender, args) =>
             {
-                // TODO - Deselect item in list view and disable next turn button each time
-                // Deselect item when turn is finished
-                /*
-                selectablePlayersList.Selected = false;
-                selectablePlayersList.SetSelection(-1);
-                */
-
-                // Assign selected player to the fantasy team
-                //int selectedPlayerPosition = selectablePlayersList.SelectedItemPosition;
-
                 selectedPlayer.FantasyTeamID = allFantasyTeams[currentManagerTurnPointer].FantasyTeamID;
                 playerRepository.UpdatePlayer(selectedPlayer);
+
+                // Deselect item when turn is finished
+                if (selectablePlayersList.CheckedItemPositions != null)
+                {
+                    selectablePlayersList.CheckedItemPositions.Clear();
+                    nextTurnButton.Enabled = false;
+                }
 
                 if (turnCounter == 2)
                 {
