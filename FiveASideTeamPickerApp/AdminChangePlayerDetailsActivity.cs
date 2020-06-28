@@ -92,25 +92,41 @@ namespace FiveASideTeamPickerApp
 
             saveButton.Click += (sender, args) =>
             {
-                // Update player object with user's inputs from text fields
-                player.Firstname = playerFirstName.Text;
-                player.Surname = playerSurname.Text;
-                player.Price = Convert.ToDouble(playerPrice.Text);
-                player.PositionID = positionRepository.GetPositionIDFromName(playerPosition.SelectedItem.ToString());
-                player.PremierTeamID = premierTeamRepository.GetPremierTeamIDFromName(playerPremierTeam.SelectedItem.ToString());
+                Boolean validUserInput = true;
 
-                if (pageType == "existing")
+                try
+                {
+                    // Update player object with user's inputs from text fields
+                    player.Firstname = playerFirstName.Text;
+                    player.Surname = playerSurname.Text;
+                    player.Price = Convert.ToDouble(playerPrice.Text);
+                    player.PositionID = positionRepository.GetPositionIDFromName(playerPosition.SelectedItem.ToString());
+                    player.PremierTeamID = premierTeamRepository.GetPremierTeamIDFromName(playerPremierTeam.SelectedItem.ToString());
+                }
+                catch(ArgumentOutOfRangeException)
+                {
+                    Toast.MakeText(this, Resource.String.invalid_add_player_input, ToastLength.Long).Show();
+                    validUserInput = false;
+                }
+                catch(FormatException)
+                {
+                    Toast.MakeText(this, Resource.String.invalid_add_player_price_input, ToastLength.Long).Show();
+                    validUserInput = false;
+                }
+
+                if (pageType == "existing" && validUserInput is true)
                 {
                     playerRepository.UpdatePlayer(player);
+                    SetResult(Result.Ok);
+                    Finish();
                 }
-                else if (pageType == "new")
+                else if (pageType == "new" && validUserInput is true)
                 {
                     player.FantasyTeamID = 0;
                     playerRepository.InsertNewPlayer(player);
+                    SetResult(Result.Ok);
+                    Finish();
                 }
-                
-                SetResult(Result.Ok);
-                Finish();
             };
 
             deleteButton.Click += (sender, args) =>

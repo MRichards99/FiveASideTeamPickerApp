@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using System;
+using Newtonsoft.Json;
 
 using Android.App;
 using Android.OS;
@@ -47,19 +48,30 @@ namespace FiveASideTeamPickerApp
 
             saveButton.Click += (sender, args) =>
             {
-                premierTeam.PremierTeamName = premierTeamName.Text;
+                Boolean validUserInput = true;
 
-                if (pageType == "existing")
+                try
+                {
+                    premierTeam.PremierTeamName = premierTeamName.Text;
+                }
+                catch(ArgumentOutOfRangeException)
+                {
+                    Toast.MakeText(this, Resource.String.invalid_add_premier_team_input, ToastLength.Long).Show();
+                    validUserInput = false;
+                }
+
+                if (pageType == "existing" && validUserInput is true)
                 {
                     premierTeamRepository.UpdatePremierTeam(premierTeam);
+                    SetResult(Result.Ok);
+                    Finish();
                 }
-                else if (pageType == "new")
+                else if (pageType == "new" && validUserInput is true)
                 {
                     premierTeamRepository.AddPremierTeam(premierTeam);
+                    SetResult(Result.Ok);
+                    Finish();
                 }
-
-                SetResult(Result.Ok);
-                Finish();
             };
 
             deleteButton.Click += (sender, args) =>

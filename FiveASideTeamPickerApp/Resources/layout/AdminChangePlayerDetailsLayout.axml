@@ -61,6 +61,7 @@
 			android:layout_height="wrap_content"
 			android:id="@+id/playerDetailsPriceTextView" />
 		<EditText
+			android:inputType="numberDecimal"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
 			android:id="@+id/playerDetailsPriceEditText" />
@@ -79,6 +80,5 @@
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
 			android:id="@+id/playerDetailsCancelButton" />
-
 	</LinearLayout>
 </ScrollView>

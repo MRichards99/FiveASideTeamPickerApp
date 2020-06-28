@@ -46,9 +46,10 @@ namespace FiveASideTeamPickerApp
                 {
                     newTeam = new FantasyTeam(managerFirstName, managerSurname, fantasyTeamName);
                 }
-                catch(ArgumentOutOfRangeException ex)
+                catch(ArgumentOutOfRangeException)
                 {
-                    // TODO - Deal with invalid data, highlight relevant UI element causing issue and display message of exception on screen
+                    Toast.MakeText(this, Resource.String.invalid_register_fantasy_team_input, ToastLength.Long).Show();
+                    validUserInput = false;
                 }
 
                 if (validUserInput is true && newTeam != null)
