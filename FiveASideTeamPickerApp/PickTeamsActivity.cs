@@ -10,7 +10,7 @@ using FantasyTeamsDBSharedCode.SQLite_Implementation;
 
 namespace FiveASideTeamPickerApp
 {
-    [Activity(Label = "PickTeamsActivity")]
+    [Activity(Label = "PickTeamsActivity", ConfigurationChanges = Android.Content.PM.ConfigChanges.Orientation | Android.Content.PM.ConfigChanges.ScreenSize)]
     public class PickTeamsActivity : Activity
     {
         private SQLiteFantasyTeamRepository fantasyTeamRepository;

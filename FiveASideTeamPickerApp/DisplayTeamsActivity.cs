@@ -26,7 +26,6 @@ namespace FiveASideTeamPickerApp
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.DisplayTeamsLayout);
 
-            // TODO - Make ListView display more than one player at once
             TextView displayTeamsTeam1DetailsTextView = FindViewById<TextView>(Resource.Id.displayTeamsTeam1DetailsTextView);
             TextView displayTeamsTeam1TeamPriceText = FindViewById<TextView>(Resource.Id.displayTeamsTeam1TeamPriceText);
             ListView displayTeamsTeam1PlayerListView = FindViewById<ListView>(Resource.Id.displayTeamsTeam1PlayerListView);
