@@ -35,17 +35,30 @@ namespace FantasyTeamsDBSharedCode.SQLite_Implementation
             return dbConnection.Table<Player>().Where(p => p.FantasyTeamID == fantasyTeamID).ToList();
         }
 
+        public double GetAverageCostOfAllPlayers()
+        {
+            List<Player> allPlayers = GetAllPlayers();
+            double totalPlayerCost = 0.0;
+
+            foreach (Player player in allPlayers)
+            {
+                totalPlayerCost += player.Price;
+            }
+
+            return totalPlayerCost / allPlayers.Count();
+        }
+
         public int GetNumberOfPlayersAssignedToFantasyTeamInPremierTeam(int premierTeamID, int fantasyTeamID)
         {
             return dbConnection.Table<Player>().Where(p => p.FantasyTeamID == fantasyTeamID && p.PremierTeamID == premierTeamID).Count();
         }
 
-        public List<Player> GetSelectablePlayersForFantasyTeam(Position position, int fantasyTeamID)
+        public List<Player> GetSelectablePlayersForFantasyTeam(Position position, double remainingTeamBalance, int fantasyTeamID)
         {
             SQLitePremierTeamRepository premierTeamRepository = new SQLitePremierTeamRepository();
             List<int> eligiblePremierTeamIDs = premierTeamRepository.GetEligiblePremierTeams(fantasyTeamID);
             
-            return dbConnection.Table<Player>().Where(p => p.PositionID == position.PositionID && p.FantasyTeamID == 0 && eligiblePremierTeamIDs.Contains(p.PremierTeamID)).ToList<Player>();
+            return dbConnection.Table<Player>().Where(p => p.PositionID == position.PositionID && p.FantasyTeamID == 0 && eligiblePremierTeamIDs.Contains(p.PremierTeamID) && p.Price <= remainingTeamBalance).ToList<Player>();
         }
 
         public int InsertNewPlayer(Player player)

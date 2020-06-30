@@ -14,7 +14,7 @@ namespace FiveASideTeamPickerApp
     {
         // Defining delegates to be used with this adapter
         public delegate List<Player> NoParameterPlayerDelegate();
-        public delegate List<Player> PositionPlayerDelegate(Position position, int fantasyTeamID);
+        public delegate List<Player> PositionPlayerDelegate(Position position, double remainingTeamBalance, int fantasyTeamID);
 
         private readonly Activity _context;
         private List<Player> _players;
@@ -101,9 +101,9 @@ namespace FiveASideTeamPickerApp
             }
         }
 
-        public void AppendToPlayerList(PositionPlayerDelegate databaseQuery, Position position, int fantasyTeamID)
+        public void AppendToPlayerList(PositionPlayerDelegate databaseQuery, Position position, double remainingTeamBalance, int fantasyTeamID)
         {
-            List<Player> queryResult = databaseQuery(position, fantasyTeamID).OrderBy(s => s.Surname).ToList();
+            List<Player> queryResult = databaseQuery(position, remainingTeamBalance, fantasyTeamID).OrderBy(s => s.Surname).ToList();
 
             foreach (Player player in queryResult)
             {

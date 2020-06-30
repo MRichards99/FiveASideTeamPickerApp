@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Random = System.Random;
 
 using Android.App;
@@ -17,6 +18,7 @@ namespace FiveASideTeamPickerApp
         private SQLitePlayerRepository playerRepository;
 
         private TextView currentManagerTurnTextView;
+        private TextView remainingFantasyTeamBalance;
         private ListView selectablePlayersList;
 
         private Player selectedPlayer;
@@ -24,6 +26,7 @@ namespace FiveASideTeamPickerApp
         private int turnCounter;
         private List<Position> currentSelectablePositions;
         private int stageManagerXOR;
+        private List<FantasyTeam> allFantasyTeams;
 
         public PickTeamsActivity()
         {
@@ -39,6 +42,8 @@ namespace FiveASideTeamPickerApp
 
             // Getting UI elements from layout
             currentManagerTurnTextView = FindViewById<TextView>(Resource.Id.currentManagerTurn);
+            remainingFantasyTeamBalance = FindViewById<TextView>(Resource.Id.remainingTeamBalance);
+
             selectablePlayersList = FindViewById<ListView>(Resource.Id.selectablePlayers);
             Button nextTurnButton = FindViewById<Button>(Resource.Id.nextTurnButton);
 
@@ -58,7 +63,7 @@ namespace FiveASideTeamPickerApp
             currentManagerTurnPointer = SelectStartingManager();
 
             // Get fantasy teams
-            List<FantasyTeam> allFantasyTeams = fantasyTeamRepository.GetAllFantasyTeams();
+            allFantasyTeams = fantasyTeamRepository.GetAllFantasyTeams();
 
             // Resetting any previous team selections
             playerRepository.ResetFantasyTeamSelection();
@@ -70,11 +75,11 @@ namespace FiveASideTeamPickerApp
             string currentManagerSurname = allFantasyTeams[currentManagerTurnPointer].ManagerSurname;
             string currentFantasyTeamName = allFantasyTeams[currentManagerTurnPointer].FantasyTeamName;
             currentManagerTurnTextView.Text = NameTeamTextFormatting.FormatNameAndTeam(currentManagerFirstName, currentManagerSurname, currentFantasyTeamName);
+            remainingFantasyTeamBalance.Text = fantasyTeamRepository.GetRemainingFantasyTeamCost(allFantasyTeams[currentManagerTurnPointer].FantasyTeamID).ToString();
 
             selectablePlayersList.ItemSelected += (sender, args) =>
             {
                 selectedPlayer = selectablePlayersAdapter[args.Position];
-
             };
 
             nextTurnButton.Click += (sender, args) =>
@@ -115,6 +120,7 @@ namespace FiveASideTeamPickerApp
                 currentManagerSurname = allFantasyTeams[currentManagerTurnPointer].ManagerSurname;
                 currentFantasyTeamName = allFantasyTeams[currentManagerTurnPointer].FantasyTeamName;
                 currentManagerTurnTextView.Text = NameTeamTextFormatting.FormatNameAndTeam(currentManagerFirstName, currentManagerSurname, currentFantasyTeamName);
+                remainingFantasyTeamBalance.Text = fantasyTeamRepository.GetRemainingFantasyTeamCost(allFantasyTeams[currentManagerTurnPointer].FantasyTeamID).ToString();
 
                 // Data will have changed so list view needs refreshing - player selected or new stage, one or both
                 selectablePlayersAdapter.NotifyDataSetChanged();
@@ -168,7 +174,7 @@ namespace FiveASideTeamPickerApp
 
             foreach (Position position in selectablePositions)
             {
-                playerAdapter.AppendToPlayerList(new PlayerAdapter.PositionPlayerDelegate(playerRepository.GetSelectablePlayersForFantasyTeam), position, currentFantasyTeamTurnID);
+                playerAdapter.AppendToPlayerList(new PlayerAdapter.PositionPlayerDelegate(playerRepository.GetSelectablePlayersForFantasyTeam), position, fantasyTeamRepository.GetRemainingFantasyTeamCost(allFantasyTeams[currentManagerTurnPointer].FantasyTeamID), currentFantasyTeamTurnID);
             }
         }
 

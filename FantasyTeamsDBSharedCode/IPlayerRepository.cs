@@ -7,7 +7,8 @@ namespace FantasyTeamsDBSharedCode
         List<Player> GetAllPlayers();
         List<Player> GetAllPlayersAssignedToFantasyTeams();
         List<Player> GetAllPlayersOfAFantasyTeam(int fantasyTeamID);
-        List<Player> GetSelectablePlayersForFantasyTeam(Position position, int fantasyTeamID);
+        List<Player> GetSelectablePlayersForFantasyTeam(Position position, double remainingTeamBalance, int fantasyTeamID);
+        double GetAverageCostOfAllPlayers();
         int GetNumberOfPlayersAssignedToFantasyTeamInPremierTeam(int premierTeamID, int fantasyTeamID);
 
         int ResetFantasyTeamSelection();

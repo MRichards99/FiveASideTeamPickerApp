@@ -29,6 +29,7 @@
   
     <!--Pick Team Menu-->
     <string name="turn_textview">Turn: </string>
+    <string name="remaining_balance_textview">Remaining balance (£million): </string>
     <string name="next_turn_button_text">Next Turn</string>
   
     <!--Display Teams Page-->
